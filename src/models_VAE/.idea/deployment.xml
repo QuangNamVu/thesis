@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="namvq@10.199.208.25">
+    <serverData>
+      <paths name="namvq">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/namvq/model" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

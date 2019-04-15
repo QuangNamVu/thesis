@@ -3,132 +3,7 @@ import pandas as pd
 from tensorpack.dataflow.base import RNGDataFlow
 
 
-def load_data_seq(hps):
-    # df = resample_data(info_params)
-    df = pd.read_csv(filepath_or_buffer=hps.data_file_name)
-    lag_time = hps.lag_time
-
-    attributes_normalize_mean = hps.attributes_normalize_mean
-    attributes_normalize_log = hps.attributes_normalize_log
-
-    n_attributes_total = attributes_normalize_mean + attributes_normalize_log
-
-    X_selected = df[n_attributes_total]
-
-    # if lagtime = 10: X[diff](index 10)= X[diff][0] = X_selected[10]- X_selected[0]
-    X_diff = X_selected.diff(periods=hps.lag_time).dropna
-    X = X_diff().copy()
-
-    for att in attributes_normalize_log:
-        X[att] = np.log(X_diff[att] + 1e-20)
-
-    idx_split = hps.N_train_seq
-    n_test_seq = hps.N_test_seq
-    T, M = hps.T, hps.M
-
-    #
-    if hps.normalize_data_idx:
-        mu = np.mean(X[0:idx_split])
-        X_max = np.max(X[0:idx_split])
-        X_min = np.min(X[0:idx_split])
-        X_std = np.std(X[0:idx_split])
-
-    else:
-        mu = np.mean(X)
-        X_max = np.max(X)
-        X_min = np.min(X)
-        X_std = np.std(X)
-
-    normalize = hps.normalize_data
-    if normalize is 'z_score':
-        print('Normalize: Z score')
-        X_normalized = (X - mu) / X_std
-
-    elif normalize is 'min_max':
-        print('Normalize: Min Max')
-        X_normalized = (X - X_min) / (X_max - X_min)
-
-    elif normalize is 'min_max_centralize':
-        print('Normalize: Min Max Centralize')
-        X_normalized = (X - mu) / (X_max - X_min)
-
-    else:
-        print('Missing Normalization')
-        X_normalized = X
-
-    X_normalized = X_normalized.values
-
-    tau = hps.Tau
-
-    # X tau = X shift down lag_time
-    # X_tau_seq = np.roll(X_normalized, - lag_time, axis=0)
-    X_tau_seq = np.roll(X_normalized, -1, axis=0)
-
-    X_train_seq = X_normalized[0:idx_split]
-    X_test_seq = X_normalized[idx_split:idx_split + n_test_seq]
-
-    X_tau_train_seq = X_tau_seq[0:idx_split]
-    X_tau_test_seq = X_tau_seq[idx_split:idx_split + n_test_seq]
-
-    if not hps.create_next_trend:
-        return X_train_seq, X_test_seq, X_tau_train_seq, X_tau_test_seq
-
-    idx_split_predict = idx_split + tau - T
-
-    # remove nan at end of array
-    # next_delta = np.roll(df['Close'].diff(periods=1).values, shift=-1)[0:-1]
-    next_delta = df.Close[X.Close.index].diff(periods=-1).dropna().values
-
-    if hps.C is 3:
-        # return -1 0 1 => 0 1 2 for classify
-        next_movement = np.sign(next_delta).astype(int) + 1
-    else:
-        next_movement = np.where(next_delta >= 0, 1, 0)
-
-    # lag_time + 1 + 1 -> next offset [0: 10] = [129:139] -> 131 in csv
-    hidden_target_classify = np.roll(next_movement, - lag_time, axis=0)  # shift up
-
-    # one-hot encode with numpy
-    target_one_hot = np.eye(hps.C)[np.reshape(hidden_target_classify, -1)]
-
-    target_one_hot_train_seq = target_one_hot[0:idx_split_predict]
-    target_one_hot_test_seq = target_one_hot[idx_split:idx_split_predict + n_test_seq]
-    return X_train_seq, X_test_seq, X_tau_train_seq, X_tau_test_seq, target_one_hot_train_seq, target_one_hot_test_seq
-
-
-def segment_seq(X_seq, X_tau_seq, hps, target_one_hot=None):
-    # assert info_params.n_time_steps * info_params.n_batch > 0, 'Batch size = 0 num batch = 0'
-
-    assert len(np.shape(X_seq)) >= 2, 'Dim Tensor >= 3'
-
-    T, D = hps.T, hps.D
-    Tau = hps.Tau
-    N = X_seq.shape[0]  # n_samples N = T -> 1 segment; N = T + 1 -> 2 segments
-
-    # window slide
-    n_segments = N - T + 1
-    X_segment = np.zeros(shape=(n_segments, T, D))
-    X_tau_segment = np.zeros(shape=(n_segments, T, D))
-
-    for i in range(n_segments):
-        X_segment[i] = X_seq[i: i + T]
-        X_tau_segment[i] = X_tau_seq[i: i + T]
-
-    if not hps.create_next_trend:
-        return X_segment, X_tau_segment
-
-    assert type(target_one_hot) is np.ndarray, 'Trending classify is missing'
-
-    y_one_hot_segment = np.zeros(shape=(n_segments, Tau, hps.C))
-
-    for i in range(n_segments):
-        y_one_hot_segment[i] = target_one_hot[i: i + Tau]
-
-    return X_segment, X_tau_segment, y_one_hot_segment
-
-
 class LoadData(RNGDataFlow):
-
     def __init__(self, X, X_tau, y_one_hot, shuffle=False):
 
         self.shuffle = shuffle
@@ -149,3 +24,99 @@ class LoadData(RNGDataFlow):
             x_hat_element = self.x_hat[k]
             y_one_hot_element = self.y_one_hot[k]
             yield [x_element, x_hat_element, y_one_hot_element]
+
+
+def load_data_seq(hps):
+    # df = resample_data(info_params)
+    df = pd.read_csv(filepath_or_buffer=hps.data_file_name)
+
+    attributes_normalize_mean = hps.attributes_normalize_mean
+    attributes_normalize_log = hps.attributes_normalize_log
+
+    next_deltaClose = df.Close.diff(periods=1).dropna()
+
+    n_attributes_total = attributes_normalize_mean + attributes_normalize_log
+
+    X = df[n_attributes_total]
+
+    # if lagtime = 10: X[diff](index 10)= X[diff][0] = X_selected[10]- X_selected[0]
+    if hps.is_differencing and hps.lag_time is not 0:
+        X = X.diff(periods=hps.lag_time).dropna()
+    else:
+        hps.lag_time = 0  # Not shift when not differencing
+
+    for att in attributes_normalize_log:
+        X[att] = np.log(X[att] + 1e-20)
+
+    if hps.normalize_data_idx:
+        mu = X[0:hps.N_train_seq].mean(axis=0)
+        X_max = X[0:hps.N_train_seq].max(axis=0)
+        X_min = X[0:hps.N_train_seq].min(axis=0)
+        X_std = X[0:hps.N_train_seq].std(axis=0)
+    else:
+        mu = np.mean(X, axis=0)
+        X_max = np.max(X, axis=0)
+        X_min = np.min(X, axis=0)
+        X_std = np.std(X, axis=0)
+
+    normalization = hps.normalize_data
+    if normalization is 'z_score':
+        print('Normalize: Z score')
+        X = (X - mu) / X_std
+
+    elif normalization is 'min_max':
+        print('Normalize: Min Max')
+        X = (X - X_min) / (X_max - X_min)
+
+    elif normalization is 'min_max_centralize':
+        print('Normalize: Min Max Centralize')
+        X = (X - mu) / (X_max - X_min)
+    else:
+        print('Missing Normalization')
+
+    return X, next_deltaClose
+
+
+def segment_seq(dfX, df_deltaClose, hps):
+    T, D, Tau = hps.T, hps.D, hps.Tau
+    # window slide
+    next_shift = 1
+    start_idx = dfX.index[0]
+    end_idx = dfX.index[-1] - T - Tau - 1
+    n_segments = end_idx - start_idx
+    segment = np.zeros(shape=(n_segments, T, D))
+    next_segment = np.zeros(shape=(n_segments, T, D))
+
+    delta_segment = np.zeros(shape=(n_segments, Tau))
+    for i, idx_df in enumerate(range(start_idx, end_idx)):
+        segment[i] = dfX.loc[idx_df: idx_df + T - 1].values
+        next_segment[i] = dfX.loc[idx_df + next_shift: idx_df + next_shift + T - 1].values
+        delta_segment[i] = df_deltaClose.loc[idx_df + T: idx_df + T + Tau - 1].values
+
+    target_classify = np.copy(delta_segment)
+    if hps.C is 3:
+        # return -1 0 1 => 0 1 2 for classify
+        # target_classify = np.sign(delta_segment).astype(int) + 1
+        target_classify = np.where(delta_segment > 0, 2, (np.where(delta_segment == 0, 1, 0)))
+    elif hps.C is 2:
+        target_classify = np.where(delta_segment >= 0, 1, 0)
+
+    target_one_hot = np.eye(hps.C)[target_classify]
+
+    return segment, next_segment, target_one_hot
+
+
+def train_test_split(segment, next_segment, target_one_hot, hps):
+    idx_split = hps.N_train_seq - hps.T + 1
+    assert idx_split < segment.shape[0], print("len data must greater than idx split")
+
+    train_segment = segment[:idx_split]
+    test_segment = segment[idx_split:]
+
+    train_next_shift = next_segment[:idx_split]
+    test_next_shift = next_segment[idx_split:]
+
+    train_target_one_hot = target_one_hot[:idx_split]
+    test_target_one_hot = target_one_hot[idx_split:]
+
+    return train_segment, test_segment, train_next_shift, test_next_shift, train_target_one_hot, test_target_one_hot

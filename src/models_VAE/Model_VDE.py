@@ -13,7 +13,7 @@ from tensorpack import *
 from tensorpack.tfutils.scope_utils import auto_reuse_variable_scope
 # from tensorpack.tfutils import summary
 
-from VDE import VDEModelDesc, VDETrainer  # , RandomZData
+from Model import VDEModelDesc, VDETrainer  # , RandomZData
 from info_params import get_default_hparams
 from load_data import *
 

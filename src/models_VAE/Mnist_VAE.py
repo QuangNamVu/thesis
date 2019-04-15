@@ -9,7 +9,7 @@ from tensorpack.utils import logger
 from tensorpack import *
 from tensorpack.tfutils.sesscreate import SessionCreatorAdapter, NewSessionCreator
 
-from VDE import VDEModelDesc, VDETrainer  # , RandomZData
+from Model import VDEModelDesc, VDETrainer  # , RandomZData
 from info_params import get_default_hparams
 from load_data import *
 import tensorflow as tf

@@ -13,5 +13,5 @@ def predict(self):
                                               activation_fn=tf.nn.elu)
 
     # [M, Tau * C] => [M, Tau, C]
-    y_predict = tf.reshape(fc_l1, shape=[-1, self.hps.Tau, self.hps.C], name='y_pred')
+    y_predict = tf.reshape(fc_l1, shape=[-1, self.hps.Tau, self.hps.C])
     return y_predict

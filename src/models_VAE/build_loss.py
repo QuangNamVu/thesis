@@ -83,17 +83,21 @@ def build_losses(self, y_one_hot, x_hat):
         tf.summary.scalar('mse', self.mse_loss)
 
         # # cross_entropy
-        # eps = 1e-8
-        # x_con_clip = tf.clip_by_value(self.x_con, eps, 1 - eps)
-        # x_hat_clip = tf.clip_by_value(x_hat, eps, 1 - eps)
+        eps = 1e-10
+        x_con_clip = tf.clip_by_value(self.x_con, eps, 1 - eps)
 
         self.log_lik_loss = - tf.reduce_mean(
-            x_hat * tf.log(self.x_con) + (1 - x_hat) * tf.log(1 - self.x_con))
+            x_hat * tf.log(self.x_con) + (1 - x_con_clip) * tf.log(1 - x_con_clip))
 
         tf.summary.scalar('log_likelihood_reconstructed', self.log_lik_loss)
 
+        if self.hps.normalize_data is ('min_max' or 'min_max_centralize'):
+            self.px_loss = self.log_lik_loss
+        elif self.hps.normalize_data is 'z_score':
+            self.px_loss = self.log_mse_loss
+
     # self.mse_loss
     self.total_loss = tf.add_n(
-        [self.log_lik_loss, self.auto_corr_loss, self.predict_loss, self.latent_loss], name="total_cost")
+        [self.px_loss, self.auto_corr_loss, self.predict_loss, self.latent_loss], name="total_cost")
 
     tf.summary.scalar('total-loss', self.total_loss)

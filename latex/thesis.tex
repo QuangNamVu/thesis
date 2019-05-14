@@ -1,0 +1,43 @@
+\documentclass[
+12pt, % 10pt, 11pt, 12pt
+english,
+singlespacing, 
+liststotoc, 
+toctotoc, 
+parskip, % Uncomment to add space between paragraphs
+headsepline, % Uncomment to get a line under the header
+]{MastersDoctoralThesis} % The class file specifying the document structure
+\input{preamble} % list package
+\input{thesis_info} % khoa supervisor
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\begin{document}
+\input{frontbackmatter/titlepage}
+%\input{frontbackmatter/abstract}
+%\input{frontbackmatter/acknowledgements}
+\input{frontbackmatter/toc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+%\input{chapters/LoiCamOn}
+%\input{chapters/camket}
+\input{chapters/intro}
+\input{chapters/overview}
+%\input{chapters/data}
+%\input{chapters/models}
+\input{chapters/concept}
+
+%\input{chapters/implement}
+
+%\input{chapters/next_plan}
+
+%\input{reports/week24}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO
+\printbibliography[title={Tài liệu tham khảo}]
+%\printbibliography[keyword={Vietnam},title={Tài liệu tham khảo}]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

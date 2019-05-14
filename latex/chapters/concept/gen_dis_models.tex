@@ -1,0 +1,10 @@
+\section{Các khái niệm về mô hình sinh, mô hình phân biệt}
+Khái niệm mô hình sinh và mô hình phân biệt ở đây được sử dụng trong ngữ cảnh học có giám sát.
+\subsection{Mô hình sinh (Generative Model)}
+Với dữ liệu đầu vào là $x$ được gán nhãn y trong quá trình tiền xử lý, mô hình sinh học được phân bố đồng thời của x và y $p_\theta(x,y)$ thông qua việc ước lượng các giá trị của các thông số trong $\theta$ việc suy diễn nhãn đối với dữ liệu kiểm thử được thực hiện bằng cách sử dụng luật Bayes\cite{gen-vs-dis} để tính $p_\theta(y\given x)$ sau đó tính giá trị dự đoán của nhãn với $\hat{y}$ có độ tin cậy cao nhất:
+$\hat{y} = \argmax\limits_{y \in \mathcal{D}_y} p_\theta(y\given x)$. Với định nghĩa này một mô hình khi có đầu vào gồm các giao dịch và các thuộc tính được thêm vào từ bước xử lý dữ liệu mô hình có khả năng học được phân bố của các giao dịch và có thể sinh ra được các giao dịch mới theo phân bố tương tự như phân bố của dữ liệu được coi là mô hình sinh hay mô hình sinh mẫu.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mô hình phân biệt (Discriminative Model)}
+Mô hình phân biệt học được phân bố $p_\theta(y \given x)$, việc suy diễn nhãn được tính trực tiếp từ dữ liệu kiểm thử. Với định nghĩa này một mô hình có cùng dữ liệu trên chứa thông tin của các giao dịch và đầu ra là xu hướng tăng hoặc giảm của giao dịch hoặc giá tiếp theo của giao dịch được gọi là mô hình phân biệt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

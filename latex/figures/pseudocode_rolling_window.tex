@@ -1,0 +1,22 @@
+\begin{algorithm}[H]
+	\KwData{507918 giao dịch bitcoin/Yên}
+	\KwResult{Mô hình với các tham số, độ chính xác khi test}
+	\textbf{Khởi tạo:}\\
+	\begin{itemize}
+		\item Chuẩn hóa dữ liệu theo từng cột.
+		\item Tập train: 480000 bộ cửa sổ đầu, mỗi cửa sổ chứa 100 giao dịch liên tục nhau, mỗi cửa sổ liên tiếp nhau 1 giao dịch.
+		\item Các tham số của mô hình tại mỗi lớp.
+		\item $\ell=\infty$
+	\end{itemize}
+	\While{Khi số lượng bộ test nhỏ hơn 1024}{
+		Tập test : sau 100 giao dịch tiếp theo so với tập train lấy 1024 bộ cửa sổ liên tiếp.\;
+		Lấy tập test làm tập kiểm định;
+		Tính $\ell$ là Loss của mô hình đối với tập kiểm định;
+
+		\If{$\ell_1 < \ell$}{
+			Cập nhật tham số\; $\ell = \ell_1$\;
+		}
+		Tập train: tăng kích thước của tập train thêm lên 1024 cửa sổ tiếp theo.
+	}
+	\caption{Áp dụng kĩ thuật rolling window}
+\end{algorithm}

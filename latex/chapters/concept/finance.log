@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.4.10)  14 MAY 2019 19:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.4.10)  15 MAY 2019 10:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1613,6 +1613,11 @@ Missing character: There is no h in font nullfont!
 Missing character: There is no á in font nullfont!
 Missing character: There is no º in font nullfont!
 Missing character: There is no £ in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no Ä in font nullfont!
+Missing character: There is no ƒ in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no Æ in font nullfont!
 Missing character: There is no ° in font nullfont!
@@ -1625,11 +1630,11 @@ Missing character: There is no ™ in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no [ in font nullfont!
-\citation{noise-finance}
+\citation{noise-in-finance}
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.18 ...Ã³ kháº£ lÆ°u Ä‘á»™ng \cite{noise-finance}
+l.18 ... nÄƒng lÆ°u Ä‘á»™ng\cite{noise-in-finance}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1638,7 +1643,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `noise-finance' on page  undefined on input line 18.
+LaTeX Warning: Citation `noise-in-finance' on page  undefined on input line 18.
+
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -1651,7 +1657,7 @@ Missing character: There is no . in font nullfont!
  
 Here is how much of TeX's memory you used:
  14 strings out of 493029
- 237 string characters out of 6136234
+ 240 string characters out of 6136234
  54061 words of memory out of 5000000
  3649 multiletter control sequences out of 15000+600000
  3948 words of font info for 15 fonts, out of 8000000 for 9000

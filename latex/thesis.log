@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.4.10)  14 MAY 2019 19:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.4.10)  15 MAY 2019 11:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3825,16 +3825,29 @@ Package cleveref Info: loaded `english' language definitions on input line 1.
 Ch\IeC {\uhorn }\IeC {\ohorn }ng 3.
 (./chapters/concept/finance.tex
 
-LaTeX Warning: Citation 'noise-finance' on page 7 undefined on input line 18.
+LaTeX Warning: Citation 'noise-in-finance' on page 7 undefined on input line 18
+.
 
 )
 1: section
 [7
 
-] (./chapters/concept/gen_dis_models.tex))
+] (./chapters/concept/probability.tex
+<figures/probability/z_score_marginal_distribute_diff.png, id=116, 424.58624pt 
+x 425.59pt>
+File: figures/probability/z_score_marginal_distribute_diff.png Graphic file (ty
+pe png)
+ <use figures/probability/z_score_marginal_distribute_diff.png>
+Package pdftex.def Info: figures/probability/z_score_marginal_distribute_diff.p
+ng used on input line 6.
+(pdftex.def)             Requested size: 368.57838pt x 369.46803pt.
+Package cleveref Info: loaded `english' language definitions on input line 10.
+
+[8]))
 Package cleveref Info: loaded `english' language definitions on input line 40.
-Package atenddvi Info: Last page = 12.
- [8]
+ [9 <./figures/probability/z_score_marginal_distribute_diff.png>]
+Package cleveref Info: loaded `english' language definitions on input line 40.
+ [10]
 LaTeX Font Info:    Try loading font information for T5+cmtt on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
@@ -3862,7 +3875,7 @@ stopedia .
 
 AED: lastpage setting LastPage
 1: section
-[9
+[11
 
 ]
 
@@ -3875,7 +3888,7 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
 Package atveryend Info: Executing hook `AfterLastShipout' on input line 43.
 (./thesis.aux
 
-Package atenddvi Warning: Rerun LaTeX, last page has changed.
+Package atenddvi Warning: Rerun LaTeX, last page not yet found.
 
 
 Package animate Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -3905,32 +3918,31 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
  )
 (\end occurred when \iftrue on line 16 was incomplete) 
 Here is how much of TeX's memory you used:
- 72436 strings out of 493029
- 1619083 string characters out of 6136234
- 2224406 words of memory out of 5000000
- 74699 multiletter control sequences out of 15000+600000
- 38673 words of font info for 67 fonts, out of 8000000 for 9000
+ 72462 strings out of 493029
+ 1619683 string characters out of 6136234
+ 2224349 words of memory out of 5000000
+ 74717 multiletter control sequences out of 15000+600000
+ 39481 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,19n,81p,10410b,2174s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf
 -dist/fonts/enc/dvips/vntex/t5.enc}</usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/vntex/urwvn/uhvb8v.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/vntex/vnr/vnbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex
-/vnr/vncsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/vntex/vnr/vnsl12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/vntex/vnr/vnti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vn
-tex/vnr/vntt12.pfb>
-Output written on thesis.pdf (13 pages, 181281 bytes).
+ublic/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/vntex/urwvn/uhvb8v.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/vntex/vnr/vncsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/v
+nr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/vntex/vnr/vnsl12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/vntex/vnr/vntt12.pfb>
+Output written on thesis.pdf (15 pages, 188176 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 39 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 244 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 

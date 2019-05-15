@@ -21,6 +21,7 @@
 \contentsline {section}{\numberline {3.1}C\IeC {\'a}c kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m v\IeC {\`\ecircumflex } t\IeC {\`a}i ch\IeC {\'\i }nh}{7}{section.16}
 \contentsline {subsection}{\numberline {3.1.1}T\IeC {\'\i }nh thanh kho\IeC {\h a}n (Liquidity)}{7}{subsection.17}
 \contentsline {subsection}{\numberline {3.1.2}Nhi\IeC {\~\ecircumflex }u (Noise)}{8}{subsection.18}
-\contentsline {section}{\numberline {3.2}C\IeC {\'a}c kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m v\IeC {\`\ecircumflex } m\IeC {\^o} h\IeC {\`\i }nh sinh, m\IeC {\^o} h\IeC {\`\i }nh ph\IeC {\^a}n bi\IeC {\d \ecircumflex }t}{8}{section.19}
-\contentsline {subsection}{\numberline {3.2.1}M\IeC {\^o} h\IeC {\`\i }nh sinh (Generative Model)}{8}{subsection.20}
-\contentsline {subsection}{\numberline {3.2.2}M\IeC {\^o} h\IeC {\`\i }nh ph\IeC {\^a}n bi\IeC {\d \ecircumflex }t (Discriminative Model)}{8}{subsection.21}
+\contentsline {section}{\numberline {3.2}C\IeC {\'a}c kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m v\IeC {\`\ecircumflex } x\IeC {\'a}c su\IeC {\'\acircumflex }t}{8}{section.19}
+\contentsline {subsection}{\numberline {3.2.1}H\IeC {\`a}m m\IeC {\d \acircumflex }t \IeC {\dj }\IeC {\d \ocircumflex } x\IeC {\'a}c su\IeC {\'\acircumflex }t (Probability density function)}{8}{subsection.20}
+\contentsline {subsection}{\numberline {3.2.2}H\IeC {\`a}m ph\IeC {\^a}n ph\IeC {\'\ocircumflex }i bi\IeC {\^e}n (Marginal distribution)}{9}{subsection.22}
+\contentsline {subsection}{\numberline {3.2.3}Nhi\IeC {\~\ecircumflex }u d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u}{10}{subsection.23}

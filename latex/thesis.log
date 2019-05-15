@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.4.10)  15 MAY 2019 11:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.4.10)  15 MAY 2019 15:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3833,7 +3833,7 @@ LaTeX Warning: Citation 'noise-in-finance' on page 7 undefined on input line 18
 [7
 
 ] (./chapters/concept/probability.tex
-<figures/probability/z_score_marginal_distribute_diff.png, id=116, 424.58624pt 
+<figures/probability/z_score_marginal_distribute_diff.png, id=120, 424.58624pt 
 x 425.59pt>
 File: figures/probability/z_score_marginal_distribute_diff.png Graphic file (ty
 pe png)
@@ -3843,14 +3843,17 @@ ng used on input line 6.
 (pdftex.def)             Requested size: 368.57838pt x 369.46803pt.
 Package cleveref Info: loaded `english' language definitions on input line 10.
 
-[8]))
-Package cleveref Info: loaded `english' language definitions on input line 40.
+[8]
+Package cleveref Info: loaded `english' language definitions on input line 18.
  [9 <./figures/probability/z_score_marginal_distribute_diff.png>]
+
+LaTeX Warning: Citation 'bishop' on page 10 undefined on input line 20.
+
+))
 Package cleveref Info: loaded `english' language definitions on input line 40.
  [10]
 LaTeX Font Info:    Try loading font information for T5+cmtt on input line 40.
-
-(/usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 ! Misplaced alignment tab character &.
@@ -3875,6 +3878,7 @@ stopedia .
 
 AED: lastpage setting LastPage
 1: section
+Package atenddvi Info: Last page = 15.
 [11
 
 ]
@@ -3887,14 +3891,6 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
 Package atveryend Info: Executing hook `AfterLastShipout' on input line 43.
 (./thesis.aux
-
-Package atenddvi Warning: Rerun LaTeX, last page not yet found.
-
-
-Package animate Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-(animate)                @@ Rerun to get internal references right! @@
-(animate)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
-
 Package cleveref Info: loaded `english' language definitions on input line 29.
 Package cleveref Info: loaded `english' language definitions on input line 34.
 )
@@ -3903,9 +3899,6 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 43.
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
@@ -3918,10 +3911,10 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
  )
 (\end occurred when \iftrue on line 16 was incomplete) 
 Here is how much of TeX's memory you used:
- 72462 strings out of 493029
- 1619683 string characters out of 6136234
+ 72466 strings out of 493029
+ 1619721 string characters out of 6136234
  2224349 words of memory out of 5000000
- 74717 multiletter control sequences out of 15000+600000
+ 74719 multiletter control sequences out of 15000+600000
  39481 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,19n,81p,10410b,2174s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3939,10 +3932,10 @@ nr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/vntex/vnr/vnsl12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/vntex/vnr/vntt12.pfb>
-Output written on thesis.pdf (15 pages, 188176 bytes).
+Output written on thesis.pdf (15 pages, 189912 bytes).
 PDF statistics:
- 283 PDF objects out of 1000 (max. 8388607)
- 244 compressed objects within 3 object streams
- 43 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 293 PDF objects out of 1000 (max. 8388607)
+ 254 compressed objects within 3 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
 

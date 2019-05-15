@@ -14,4 +14,8 @@ Với dữ liệu liên tục như trên, hàm phân phối biên đối với g
 $p_{data}(Open) = \int_y p_{data}(Open, Close=y) dy = \int_y p_{data}(Open \given Close=y)p_{data}(Close=y)dy$ Một cách trực quan, hàm phân phối trên được biểu diễn bởi đường biên bên trái Hình ~\ref{fig:z_score_marginal_distribution_diff}
 
 \subsection{Nhiễu dữ liệu}
-Nhiễu trong dữ liệu như phần đề cập trong phần \ref{concept:finance:noise} 
+Nhiễu trong dữ liệu như phần đề cập trong phần \ref{concept:finance:noise} có thể được giảm thiểu bằng cách tìm hàm phân phối của nhiễu bằng thống kê, nếu phân phối của nhiễu có dạng phân phối chuẩn với trung bình là 0, nhiễu này được gọi là nhiễu trắng Gauss (white Gaussian noise). Việc giảm thiểu nhiễu trong dữ liệu làm mô hình trở nên dễ tìm được mẫu đặc trưng (pattern) hơn.
+
+\subsection{Biến ẩn (Latent variable)}
+Biến ẩn được hiểu theo cách trừu tượng là biến không thể quan sát trực tiếp\cite{bishop} mà được suy luận từ biến quan sát được trong dữ liệu. Cụ thể hơn, với dữ liệu là giá của 100 ngày đầu một mô hình có khả năng tìm được quan hệ giữa giá ngày thứ 101 phụ thuộc nhiều vào giá ngày thứ 99 hơn so với ngày thứ 1, mô hình này được gọi là mô hình biến ẩn (latent variable model).
+\subsection{Phương pháp suy luận biến phân (Variational Inference)}

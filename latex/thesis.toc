@@ -25,3 +25,5 @@
 \contentsline {subsection}{\numberline {3.2.1}H\IeC {\`a}m m\IeC {\d \acircumflex }t \IeC {\dj }\IeC {\d \ocircumflex } x\IeC {\'a}c su\IeC {\'\acircumflex }t (Probability density function)}{8}{subsection.20}
 \contentsline {subsection}{\numberline {3.2.2}H\IeC {\`a}m ph\IeC {\^a}n ph\IeC {\'\ocircumflex }i bi\IeC {\^e}n (Marginal distribution)}{9}{subsection.22}
 \contentsline {subsection}{\numberline {3.2.3}Nhi\IeC {\~\ecircumflex }u d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u}{10}{subsection.23}
+\contentsline {subsection}{\numberline {3.2.4}Bi\IeC {\'\ecircumflex }n \IeC {\h \acircumflex }n (Latent variable)}{10}{subsection.24}
+\contentsline {subsection}{\numberline {3.2.5}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p suy lu\IeC {\d \acircumflex }n bi\IeC {\'\ecircumflex }n ph\IeC {\^a}n (Variational Inference)}{10}{subsection.25}

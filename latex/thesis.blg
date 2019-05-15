@@ -15,49 +15,53 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: thesis-blx.bib
 Database file #2: bibliography.bib
-Warning--I didn't find a database entry for "noise-finance"
+I was expecting a `,' or a `}'---line 37 of file bibliography.bib
+ :  
+ :  url = "https://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Biblatex version: 3.3
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 4 entries,
+You've used 5 entries,
             6047 wiz_defined-function locations,
-            1146 strings with 8706 characters,
-and the built_in function-call counts, 8812 in all, are:
-= -- 313
-> -- 292
-< -- 76
-+ -- 86
-- -- 100
-* -- 494
-:= -- 709
+            1151 strings with 8669 characters,
+and the built_in function-call counts, 11645 in all, are:
+= -- 430
+> -- 379
+< -- 109
++ -- 109
+- -- 124
+* -- 659
+:= -- 861
 add.period$ -- 0
-call.type$ -- 4
-change.case$ -- 27
+call.type$ -- 5
+change.case$ -- 45
 chr.to.int$ -- 34
-cite$ -- 6
-duplicate$ -- 920
-empty$ -- 970
-format.name$ -- 144
-if$ -- 2019
+cite$ -- 8
+duplicate$ -- 1255
+empty$ -- 1285
+format.name$ -- 193
+if$ -- 2678
 int.to.chr$ -- 0
-int.to.str$ -- 6
+int.to.str$ -- 9
 missing$ -- 0
-newline$ -- 74
-num.names$ -- 123
-pop$ -- 1002
+newline$ -- 94
+num.names$ -- 175
+pop$ -- 1320
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 49
 quote$ -- 0
-skip$ -- 545
+skip$ -- 728
 stack$ -- 0
-substring$ -- 160
-swap$ -- 274
-text.length$ -- 91
-text.prefix$ -- 3
+substring$ -- 216
+swap$ -- 375
+text.length$ -- 116
+text.prefix$ -- 4
 top$ -- 1
-type$ -- 140
+type$ -- 178
 warning$ -- 0
-while$ -- 99
+while$ -- 117
 width$ -- 0
-write$ -- 69
-(There was 1 warning)
+write$ -- 88
+(There was 1 error message)

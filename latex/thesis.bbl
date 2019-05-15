@@ -16,27 +16,6 @@
   {}
 \endgroup
 
-\entry{gen-vs-dis}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Andrew Y.~Ng}{A.~Y.~N.}%
-     {Michael I.~Jordan}{M.~I.~J.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{AYNMIJ1}
-  \strng{fullhash}{AYNMIJ1}
-  \field{sortinit}{A}
-  \field{title}{{On} Discriminative vs. Generative classifiers: A comparison of
-  logistic regression and naive Bayes}
-  \verb{url}
-  \verb https://papers.nips.cc/paper/2020-on-discriminative-vs-generative-class
-  \verb ifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf
-  \endverb
-  \field{journaltitle}{NIPS}
-  \field{year}{2001}
-\endentry
-
 \entry{CountriesAllowBTC}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -49,8 +28,48 @@
   \strng{fullhash}{BP1}
   \field{sortinit}{B}
   \field{howpublished}{\url{https://www.investopedia.com/articles/forex/041515/countries-where-bitcoin-legal-illegal.asp}}
-  \field{title}{Countries Where Bitcoin Is Legal & Illegal}
+  \field{title}{Countries Where Bitcoin Is Legal \& Illegal}
   \field{year}{cited May 2019}
+\endentry
+
+\entry{bishop}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Bishop}{B.}%
+     {Christopher~M.}{C.~M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{BCM1}
+  \strng{fullhash}{BCM1}
+  \field{sortinit}{B}
+  \field{title}{Pattern Recognition and Machine Learning}
+  \verb{url}
+  \verb http://research.microsoft.com/en-us/um/people/cmbishop/prml/
+  \endverb
+  \field{year}{2006}
+\endentry
+
+\entry{noise-in-finance}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Black}{B.}%
+     {Fischer}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BF1}
+  \strng{fullhash}{BF1}
+  \field{sortinit}{B}
+  \verb{doi}
+  \verb https://doi.org/10.1111/j.1540-6261.1986.tb04513.x
+  \endverb
+  \field{title}{Noise}
+  \field{journaltitle}{Journal of Finance, Volume 41}
+  \field{year}{1986}
 \endentry
 
 \entry{live-order-book}{misc}{}

@@ -24,6 +24,7 @@
 \contentsline {section}{\numberline {3.2}C\IeC {\'a}c kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m v\IeC {\`\ecircumflex } x\IeC {\'a}c su\IeC {\'\acircumflex }t}{8}{section.19}
 \contentsline {subsection}{\numberline {3.2.1}H\IeC {\`a}m m\IeC {\d \acircumflex }t \IeC {\dj }\IeC {\d \ocircumflex } x\IeC {\'a}c su\IeC {\'\acircumflex }t (Probability density function)}{8}{subsection.20}
 \contentsline {subsection}{\numberline {3.2.2}H\IeC {\`a}m ph\IeC {\^a}n ph\IeC {\'\ocircumflex }i bi\IeC {\^e}n (Marginal distribution)}{9}{subsection.22}
-\contentsline {subsection}{\numberline {3.2.3}Nhi\IeC {\~\ecircumflex }u tr\IeC {\'\abreve }ng (White Noise)}{10}{subsection.23}
+\contentsline {subsection}{\numberline {3.2.3}Nhi\IeC {\~\ecircumflex }u tr\IeC {\'\abreve }ng (White noise)}{10}{subsection.23}
 \contentsline {subsection}{\numberline {3.2.4}Bi\IeC {\'\ecircumflex }n \IeC {\h \acircumflex }n (Latent variable)}{10}{subsection.24}
-\contentsline {subsection}{\numberline {3.2.5}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p suy lu\IeC {\d \acircumflex }n bi\IeC {\'\ecircumflex }n ph\IeC {\^a}n (Variational Inference)}{10}{subsection.25}
+\contentsline {subsection}{\numberline {3.2.5}M\IeC {\^o} h\IeC {\`\i }nh \IeC {\dj }\IeC {\`\ocircumflex } th\IeC {\d i} c\IeC {\'o} h\IeC {\uhorn }\IeC {\'\ohorn }ng (Directed graphical model)}{10}{subsection.25}
+\contentsline {subsection}{\numberline {3.2.6}Suy lu\IeC {\d \acircumflex }n bi\IeC {\'\ecircumflex }n ph\IeC {\^a}n (Variational inference)}{11}{subsection.27}

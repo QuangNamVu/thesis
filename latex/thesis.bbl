@@ -72,6 +72,28 @@
   \field{year}{1986}
 \endentry
 
+\entry{intro_variational}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Saul}{S.}%
+     {Michael I. JordanZoubin GhahramaniTommi S. JaakkolaLawrence~K.}{M.~I. J.
+  G. S. J.~K.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{SMIJGSJK1}
+  \strng{fullhash}{SMIJGSJK1}
+  \field{sortinit}{S}
+  \verb{doi}
+  \verb https://doi.org/10.1023/A:1007665907178
+  \endverb
+  \field{title}{An Introduction to Variational Methodsfor Graphical Models}
+  \field{year}{1999}
+\endentry
+
 \entry{live-order-book}{misc}{}
   \name{author}{1}{}{%
     {{}%

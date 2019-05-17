@@ -75,18 +75,17 @@
 \entry{intro_variational}{book}{}
   \name{author}{1}{}{%
     {{}%
-     {Saul}{S.}%
-     {Michael I. JordanZoubin GhahramaniTommi S. JaakkolaLawrence~K.}{M.~I. J.
-  G. S. J.~K.}%
+     {Jordan}{J.}%
+     {Ghahramani Z. Jaakkola~T.S.}{G.~Z. J.~T.}%
      {}{}%
-     {}{}}%
+     {M.I.}{M.}}%
   }
   \list{publisher}{1}{%
     {Springer}%
   }
-  \strng{namehash}{SMIJGSJK1}
-  \strng{fullhash}{SMIJGSJK1}
-  \field{sortinit}{S}
+  \strng{namehash}{JMGZJT1}
+  \strng{fullhash}{JMGZJT1}
+  \field{sortinit}{J}
   \verb{doi}
   \verb https://doi.org/10.1023/A:1007665907178
   \endverb

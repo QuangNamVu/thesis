@@ -201,15 +201,16 @@
 %\DeclarePairedDelimiterX\Basics[1](){\let\given\sgiven #1}
 %\newcommand\Average{E\Basics}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Dkl
-%\DeclarePairedDelimiterX{\infdivx}[2]{(}{)}{%
-%	#1\;\delimsize\|\;#2%
-%}
-%\newcommand{\Dkl}{D_{KL}\infdivx}
-%\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dkl
+\DeclarePairedDelimiterX{\infdivx}[2]{(}{)}{%
+	#1\;\delimsize\|\;#2%
+}
+\newcommand{\Dkl}{D_{KL}\infdivx}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatother
 

@@ -35,4 +35,16 @@ $\\
 Một cách tổng quát xác suất đồng thời của giao dịch và xu hướng tăng giảm về giá của giao dịch tiếp theo được biểu diễn dưới dạng:
 $p_\theta(x_1, x_2, \dots, x_M) = \prod_{i=1}^{M}p_\theta(x_j, Pa(x_j))$ với $Pa(x_j)$ biến cha (parent variable) của $x_j$.
 \subsection{Suy luận biến phân (Variational inference)}
-Phương pháp suy luận biến phân được sử dụng trong mô hình đồ thị có hướng\cite{intro_variational} với các biến ẩn $z$ và các quan sát $x$ với mục tiêu ước lượng được phân bố của $x$
+Phương pháp suy luận biến phân được sử dụng trong mô hình đồ thị có hướng\cite{intro_variational} với các biến ẩn $z$ và các quan sát $x$ với mục tiêu ước lượng được phân bố của $x$ được xấp xỉ bằng phân phối $Q(Z)$: $P(X \given Z) \approx Q(Z)$ với $Q(Z)$ là phân phối tiên nghiệm đơn giản hơn $P(Z|X)$.
+
+Sử dụng độ đo bất đồng Kullback–Leibler nhằm thể hiện sự khác nhau giữa phân phối $Q$ so với phân phối $P$: 
+
+
+$\Dkl{Q}{P} \triangleq  \mathbb{E}_{Q(Z)} [\log \frac{Q(Z)}{P(Z \given X)}]$
+
+Sử dụng luật Bayes:
+$\Dkl{P}{Q} = \mathbb{E}_{Q(Z)} [\log \frac{Q(z)}{P(z , x)}  + \log P(x)]$\\
+hay:\\
+$\log(P(x)) = \Dkl{P}{Q} - \mathbb{E}_{Q(z)} [\log \frac{Q(z)}{P(z , x)}]
+= \Dkl{P}{Q} + \mathcal{L}(Q)
+$

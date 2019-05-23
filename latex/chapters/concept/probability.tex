@@ -25,15 +25,23 @@ Trong mô hình đồ thị có hướng hay mạng Bayes (Bayes network) việc
 	\label{fig:Bayes_inference}
 \end{figure}
 Cụ thể với mô hình được được trực quan theo như Hình ~\ref{fig:Bayes_inference}, một giao dịch BTC/USD vào 6 giờ sáng ngày 31/7/2017 có giá mở là 2439.97\$, giá đóng là 2415.19\$, lượng giao dịch là 138.82 đồng BTC với xu hướng giao dịch tiếp theo có xác suất được kí hiệu là:
-$P(Up \given Open =2727.26, Close=2740.01, Volume BTC = 385.41)$ với xác suất đồng thời của giao dịch và được tính:\\
-$
-P(Up,Open =2727.26, Close=2740.01, Volume BTC = 385.41)\\
- = P(Up| Pa(Up)) \cdot P(Up | P_1)
-\cdot P(Open|Pa(Up)) \cdot P(Open|P_1)\cdot P(Close|Pa(Up))\\
-\cdot P(Close|P_1) \cdot P(Volume BTC|Pa(Up)) \cdot P(Volume BTC|P_1)
-$\\
+$P(Up \given Open =2727.26, Close=2740.01, Volume BTC = 385.41)$ với xác suất đồng thời của giao dịch và được tính:
+%\begin{equation} \label{eq1}
+%\begin{multline*}
+\begin{equation}
+\begin{split}
+p(Up,Open = 2727.26, Close = 2740.01, Volume BTC = 385.41)\\
+= p(Open = 2727.26) \cdot p(Close = 2740.01) \cdot p(Volume BTC = 385.41)\\
+\cdot p(Pa(Up) \given Open =2727.26, Close=2740.01, Volume BTC = 385.41)\\
+\cdot p(P_1 \given Open =2727.26, Close=2740.01, Volume BTC = 385.41)\\
+\cdot p(Up \given Pa(Up), P_1)
+\end{split}
+\end{equation}
+
+
+
 Một cách tổng quát xác suất đồng thời của giao dịch và xu hướng tăng giảm về giá của giao dịch tiếp theo được biểu diễn dưới dạng:
-$p_\theta(x_1, x_2, \dots, x_M) = \prod_{i=1}^{M}p_\theta(x_j, Pa(x_j))$ với $Pa(x_j)$ biến cha (parent variable) của $x_j$.
+$p_\theta(x_1, x_2, \dots, x_M) = \prod_{i=1}^{M}p_\theta(x_j, Pa(x_j))$ với $Pa(x_j)$ giá trị của nút mạng trước đó (parent variable) của $x_j$.
 \subsection{Suy luận biến phân (Variational inference)}
 Phương pháp suy luận biến phân được sử dụng trong mô hình đồ thị có hướng\cite{intro_variational} với các biến ẩn $z$ và các quan sát $x$ với mục tiêu ước lượng được phân bố của $x$ được xấp xỉ bằng phân phối $Q(Z)$: $P(X \given Z) \approx Q(Z)$ với $Q(Z)$ là phân phối tiên nghiệm đơn giản hơn $P(Z|X)$.
 

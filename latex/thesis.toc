@@ -40,9 +40,9 @@
 \contentsline {subsection}{\numberline {5.2.4}Bi\IeC {\'\ecircumflex }n \IeC {\h \acircumflex }n (Latent variable)}{18}{subsection.37}
 \contentsline {subsection}{\numberline {5.2.5}M\IeC {\^o} h\IeC {\`\i }nh \IeC {\dj }\IeC {\`\ocircumflex } th\IeC {\d i} c\IeC {\'o} h\IeC {\uhorn }\IeC {\'\ohorn }ng (Directed graphical model)}{18}{subsection.38}
 \contentsline {subsection}{\numberline {5.2.6}Suy lu\IeC {\d \acircumflex }n bi\IeC {\'\ecircumflex }n ph\IeC {\^a}n (Variational inference)}{19}{subsection.40}
-\contentsline {section}{\numberline {5.3}Ki\IeC {\'\ecircumflex }n tr\IeC {\'u}c c\IeC {\'a}c m\IeC {\^o} h\IeC {\`\i }nh \IeC {\dj }\IeC {\~a} tham kh\IeC {\h a}o}{19}{section.41}
-\contentsline {subsection}{\numberline {5.3.1}R\IeC {\`\uhorn }ng ng\IeC {\~\acircumflex }u nhi\IeC {\^e}n (Random forest)}{19}{subsection.42}
-\contentsline {subsection}{\numberline {5.3.2}M\IeC {\'a}y h\IeC {\d o}c v\IeC {\'e}ct\IeC {\ohorn } h\IeC {\~\ocircumflex } tr\IeC {\d \ohorn } (Support vector machines)}{19}{subsection.43}
+\contentsline {section}{\numberline {5.3}Ki\IeC {\'\ecircumflex }n tr\IeC {\'u}c c\IeC {\'a}c m\IeC {\^o} h\IeC {\`\i }nh \IeC {\dj }\IeC {\~a} tham kh\IeC {\h a}o}{20}{section.41}
+\contentsline {subsection}{\numberline {5.3.1}R\IeC {\`\uhorn }ng ng\IeC {\~\acircumflex }u nhi\IeC {\^e}n (Random forest)}{20}{subsection.42}
+\contentsline {subsection}{\numberline {5.3.2}M\IeC {\'a}y h\IeC {\d o}c v\IeC {\'e}ct\IeC {\ohorn } h\IeC {\~\ocircumflex } tr\IeC {\d \ohorn } (Support vector machines)}{20}{subsection.43}
 \contentsline {subsection}{\numberline {5.3.3}M\IeC {\^o} h\IeC {\`\i }nh Variational autoencoder}{20}{subsection.44}
 \contentsline {chapter}{\numberline {6}Th\IeC {\'\i } nghi\IeC {\d \ecircumflex }m v\IeC {\'\ohorn }i m\IeC {\^o} h\IeC {\`\i }nh}{21}{chapter.45}
 \contentsline {section}{\numberline {6.1}Ph\IeC {\^a}n t\IeC {\'\i }ch hi\IeC {\d \ecircumflex }n th\IeC {\d \uhorn }c m\IeC {\^o} h\IeC {\`\i }nh tham kh\IeC {\h a}o}{21}{section.46}

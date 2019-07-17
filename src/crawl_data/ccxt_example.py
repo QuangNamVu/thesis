@@ -16,7 +16,7 @@ binance_key = binance_key.read().split('\n')
 
 exchange_id = 'binance'
 # exchange_class = getattr(ccxt, exchange_id)
-exchange = exchange_class({
+exchange = ccxt.binance({
     'apiKey': '7igelhtEw3GAITSkVv4pKXds2UDiMUdyZaTxA6EoEgAQeq8JO9g9nLDQOGXq2iIN',
     'secret': binance_key,
     'timeout': 30000,

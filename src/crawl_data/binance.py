@@ -1,11 +1,16 @@
 import ccxt
+import time
 import os
 import pandas as pd
 import datetime
 from pymongo import MongoClient
 
 mongo_client = MongoClient('localhost', 27017)
-db = mongo_client.ohlcvs
+db = mongo_client.crypto_currency
+collection = db['ohlcv']
+symbol = 'BNB/BTC'
+market = 'binance'
+timewindow = '1h'
 
 
 def get_file_contents(filename):
@@ -35,13 +40,11 @@ exchange = ccxt.binance({
     'enableRateLimit': True
 })
 
-symbols = ['BTC/BNB']
 
-import time
 msec = 1000
 minute = 60 * msec
 hour = 60 * minute
-hold = 30
+hold = hour + 5 * minute
 
 from_datetime = '2019-03-28 00:00:00'
 from_timestamp = exchange.parse8601(from_datetime)
@@ -53,19 +56,25 @@ to_timestamp = exchange.parse8601(to_datetime)
 
 # now = exchange.milliseconds()
 
-collection = db['binance']
 header = ['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume']
 
 
 while from_timestamp < to_timestamp:
     try:
         # print(exchange.milliseconds(), 'Fetching candles starting from', exchange.iso8601(from_timestamp))
-        ohlcvs = exchange.fetch_ohlcv('BNB/BTC', '1h', from_timestamp)
         
+        ohlcvs = exchange.fetch_ohlcv(symbol, timewindow, from_timestamp)
+
+        if len(ohlcvs) == 0:
+            print("waiting for incomming fetch")
+            time.sleep(hold)
+            ohlcvs = exchange.fetch_ohlcv(symbol, timewindow, from_timestamp)
+
         # df_current = pd.DataFrame(list(ohlcvs), columns = header)
         df_current = pd.DataFrame(ohlcvs, columns = header)
-        df_current['market'] = 'binance'
-        df_current['symbol'] = 'BNB/BTC'
+        df_current['market'] = market
+        df_current['symbol'] = symbol
+        df_current['timewindow'] = timewindow
         # convert df to list of dict
         lst_dict = df_current.T.to_dict().values()
 

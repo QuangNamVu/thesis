@@ -41,7 +41,7 @@ var layout = {
     }
 };
 
-console.log('afhdsahffhsakjfdah')
-    // Plotly.plot('plotly-div', data, layout, { showSendToCloud: true });
+// console.log('afhdsahffhsakjfdah')
+// Plotly.plot('plotly-div', data, layout, { showSendToCloud: true });
 console.log(ohlc)
 Plotly.plot(ohlc, data, layout, { showSendToCloud: true });

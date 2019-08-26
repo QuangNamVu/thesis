@@ -1,0 +1,29 @@
+https://github.com/chartjs/chartjs-plugin-zoom
+
+https://codepen.io/marcusvilete/details/EEpKMx
+
+https://www.google.com/search?client=ubuntu&channel=fs&q=CHART+JS+ZOOM&ie=utf-8&oe=utf-8
+
+https://www.chartjs.org/samples/latest/scales/time/financial.html
+https://www.chartjs.org/samples/latest/scales/time/combo.html
+https://d3js.org/
+
+
+
+* Scatter matrix
+https://bl.ocks.org/mbostock/4063663
+http://benjiec.github.io/scatter-matrix/demo/demo.html
+https://bl.ocks.org/mbostock/raw/4063663/
+
+* Blur part of a picture with PowerPoint
+
+
+* OHLC
+https://codesandbox.io/s/github/rrag/react-stockcharts-examples2/tree/master/examples/MovingAverageCrossOverAlgorithmV2
+
+https://support.office.com/en-ie/article/blur-part-of-a-picture-with-powerpoint-837e04d6-b1ed-4969-a79f-ee778c435f7c
+
+https://alysivji.github.io/reactive-dashboards-with-dash.html
+https://www.shanelynn.ie/asynchronous-updates-to-a-webpage-with-flask-and-socket-io/
+https://github.com/ezesundayeze/anonymouse-realtime-chat-app
+https://github.com/unixxxx/flask-mongodb-socketio

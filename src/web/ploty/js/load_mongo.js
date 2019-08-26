@@ -8,7 +8,7 @@ function mongodb_query(url, db_name, col_name, query_str) {
             if (err) throw err;
             db.close();
             console.log(rs);
-            return rs;
+            // return rs;
         });
     });
 }

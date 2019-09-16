@@ -4,9 +4,12 @@ from tf_utils.hparams import *
 
 home_path = os.path.expanduser("~") + '/'
 
-data_file_name = home_path + 'data/cryptodatadownload/tac_CoinBase_BTC_1h.csv'
+# data_file_name = home_path + 'data/cryptodatadownload/tac_CoinBase_BTC_1h.csv'
+data_file_name = home_path + 'data/ccxt/binance_BNB_BTC_1h.csv'
 
-attributes_normalize_mean = ['Open', 'High', 'Low', 'Close', 'Volume BTC', 'Volume USD']
+# attributes_normalize_mean = ['Open', 'High', 'Low', 'Close', 'Volume BTC', 'Volume USD']
+
+attributes_normalize_mean = ['Open', 'High', 'Low', 'Close', 'Volume']
 
 # attributes_normalize_mean = ['DeltaOpen1', 'DeltaHigh1', 'DeltaLow1', 'DeltaClose1', 'DeltaVolume_BTC1',
 #                              'Delta_Volume_USD1', 'DeltaOpen200', 'DeltaHigh200', 'DeltaLow200', 'DeltaClose200',
@@ -42,7 +45,7 @@ lst_kernels = [10, 3]
 n_z = 4
 
 row_count = sum(1 for row in data_file_name)
-N_train_seq = 5000
+N_train_seq = 35000
 
 check_error_x_recon = True
 check_error_z = True

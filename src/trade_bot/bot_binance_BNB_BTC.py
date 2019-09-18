@@ -18,10 +18,10 @@ market = 'binance'
 timewindow = '1m'
 if timewindow == '1h':
     offset = hour
-    delay = offset/ 1000
+    delay = offset / 1000
 elif timewindow == '1m':
     offset = minute
-    delay = offset/ 1000
+    delay = offset / 1000
 
 
 def get_file_contents(filename):
@@ -81,37 +81,43 @@ CLOSE_PRICE = -1
 # assume fee is 1%
 fee = .01
 
+
 def check_and_trade():
-    global binance, PREV_SIDE, CLOSE_PRICE
+    global binance, PREV_SIDE, PREV_PRICE, CLOSE_PRICE
     global fee
-
-
 
     if PREV_SIDE is "buy":
         'now: sell when y_hat > y/(1 - fee)'
         if CLOSE_PRICE <= PREV_PRICE/(1.0 - fee):
-            print("Close price: {} Previous price: {}, still waiting for sell".format(CLOSE_PRICE, PREV_PRICE))
+            print("Close price: {} Previous price: {}, still waiting for sell".format(
+                CLOSE_PRICE, PREV_PRICE))
             return
         # print("SELL PAIR")
-        print("Selling BNB Close price: {} Previous price: {}".format(CLOSE_PRICE, PREV_PRICE))
-        amount = 0.011 # BNB
+        print("Selling BNB Close price: {} Previous price: {}".format(
+            CLOSE_PRICE, PREV_PRICE))
+        amount = 0.11  # BNB
         price = CLOSE_PRICE
         order = binance.create_order(symbol, 'limit', 'sell', amount, price)
 
         PREV_SIDE = "sell"
-    
+        PREV_PRICE = CLOSE_PRICE
+
     elif PREV_SIDE is "sell":
         'now: buy when y_hat < y*(1 - fee)'
         if CLOSE_PRICE <= PREV_PRICE/(1.0 - fee):
-            print("Close price: {} Previous price: {}, still waiting for sell".format(CLOSE_PRICE, PREV_PRICE))
+            print("Close price: {} Previous price: {}, still waiting for sell".format(
+                CLOSE_PRICE, PREV_PRICE))
             return
         # print("SELL PAIR")
-        print("BUYING BNB Close price: {} Previous price: {}".format(CLOSE_PRICE, PREV_PRICE))
-        amount = 0.011 # BNB
+        print("BUYING BNB Close price: {} Previous price: {}".format(
+            CLOSE_PRICE, PREV_PRICE))
+        amount = 0.11  # BNB
         price = CLOSE_PRICE
         order = binance.create_order(symbol, 'limit', 'buy', amount, price)
         print(order)
+
         PREV_SIDE = "buy"
+        PREV_PRICE = CLOSE_PRICE
 
 
 # while from_timestamp < to_timestamp:
@@ -155,7 +161,7 @@ while True:
                 CLOSE_PRICE = ohlcvs[-1][4]
                 check_and_trade()
 
-            fromtrade_botlPREV_PRICE, CLOSE_PRICEcvs[-1][0] + offset
+            from_timestamp = ohlcvs[-1][0] + offset
             # from_timestamp = ohlcvs[-1][0]
 
             # v = ohlcvs[0][0]/ 1000

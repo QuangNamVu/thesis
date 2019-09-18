@@ -10,6 +10,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/bot_binance_BNB_BTC.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Bot Sqlite",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/bot_binance_BNB_BTC_sqlite.py",
+            "console": "integratedTerminal"
         }
     ]
 }

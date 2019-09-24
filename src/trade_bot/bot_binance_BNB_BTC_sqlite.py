@@ -138,6 +138,7 @@ while True:
             # if len(ohlcvs) != 0 and PREV_PRICE == -1: PREV_PRICE = ohlcvs[-1][4]
 
         if PREV_PRICE == -1:
+
             PREV_PRICE = ohlcvs[-1][4]
 
         df_current = pd.DataFrame(ohlcvs, columns=header)

@@ -73,14 +73,17 @@ if not old_df.empty:
 
 PREV_SIDE = "sell"
 # price in previous trade
-PREV_PRICE = -1
-# PREV_PRICE = 0.0021585
-CLOSE_PRICE = -1
+# PREV_PRICE = -1
+# PREV_PRICE = 0.0021131
+PREV_PRICE = 0.0021140	
+# CLOSE_PRICE = -1
 
 # binance's fee trading is .075% for pair contain BNB and 1% for others
 # https://www.binance.com/en/fee/schedule
-# assume fee is 1%
-fee = .01
+# assume fee is .1%
+fee = .001
+BNB_LIMIT = .01
+BTC_LIMIT = .0001
 
 
 def check_and_trade():
@@ -92,13 +95,18 @@ def check_and_trade():
         'now: sell when y_hat > y/(1 - fee)'
         if CLOSE_PRICE <= PREV_PRICE/(1.0 - fee):
             #print("Close price: {} Previous price: {}, still waiting for sell".format( CLOSE_PRICE, PREV_PRICE))
-            print("Close price: {} Previous price: {}, still waiting for sell {}\%".format(
+            print("Close price: {} Previous price: {}, still waiting for sell {}%".format(
                 CLOSE_PRICE, PREV_PRICE, (CLOSE_PRICE - PREV_PRICE)*100 / PREV_PRICE))
             return
         # print("SELL PAIR")
         print("Selling BNB Close price: {} Previous price: {}".format(
             CLOSE_PRICE, PREV_PRICE))
-        amount = 1.0  # BNB
+        # amount = 1.0  # BNB
+        # amount = max btc * price
+        amount = binance.fetch_balance().get('free').get('BNB')
+        if amount < BNB_LIMIT:
+            print("Not enough to sell")
+            return
         price = CLOSE_PRICE
         order = binance.create_order(symbol, 'limit', 'sell', amount, price)
 
@@ -108,14 +116,19 @@ def check_and_trade():
     elif PREV_SIDE is "sell":
         # if True:
         'now: buy when y_hat < y*(1 - fee)'
-        if CLOSE_PRICE <= PREV_PRICE/(1.0 - fee):
-            print("Close price: {} Previous price: {}, still waiting for buy {}\%".format(
+        if CLOSE_PRICE >= PREV_PRICE*(1.0 - fee):
+            print("Close price: {} Previous price: {}, still waiting for buy {}%".format(
                 CLOSE_PRICE, PREV_PRICE, (CLOSE_PRICE - PREV_PRICE)*100 / PREV_PRICE))
             return
         # print("SELL PAIR")
         print("BUYING BNB Close price: {} Previous price: {}".format(
             CLOSE_PRICE, PREV_PRICE))
-        amount = 1.0  # BNB
+        # amount = 1.0  # BNB
+        amount = binance.fetch_balance().get('free').get('BTC')
+        if amount < BTC_LIMIT:
+            print("Not engouh to buy")
+            return
+        amount /= CLOSE_PRICE
         price = CLOSE_PRICE
         order = binance.create_order(symbol, 'limit', 'buy', amount, price)
         print(order)

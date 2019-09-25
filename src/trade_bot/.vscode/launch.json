@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Python: Bot",
             "type": "python",
@@ -16,6 +17,13 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/bot_binance_BNB_BTC_sqlite.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Visualize 1",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/visualization/strategy_1.py",
             "console": "integratedTerminal"
         }
     ]

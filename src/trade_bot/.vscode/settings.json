@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\ProgramData\\Miniconda3\\python.exe",
+    "python.pythonPath": "/home/nam/miniconda3/envs/python3/bin/python",
     "python.linting.enabled": false,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "autopep8"
 }

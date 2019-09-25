@@ -1,21 +1,17 @@
 import ccxt
 import time
 import os
-import pandas as pd
 import datetime
-from pymongo import MongoClient
 
 
 msec = 1000
 minute = 60 * msec
 hour = 60 * minute
 
-mongo_client = MongoClient('localhost', 27017)
-db = mongo_client.crypto_currency
-collection = db['ohlcv']
 symbol = 'BNB/BTC'
 market = 'binance'
 timewindow = '1m'
+
 if timewindow == '1h':
     offset = hour
     delay = offset / 1000
@@ -43,38 +39,24 @@ binance = ccxt.binance({
     'secret': binance.secret,
 })
 
-exchange = ccxt.binance({
-    # 'apiKey': binance.apiKey,
-    # 'secret': binance.secret,
-    'timeout': 30000,
-    'rateLimit': 2000,
-    'enableRateLimit': True
-})
+# exchange = ccxt.binance({
+#     # 'apiKey': binance.apiKey,
+#     # 'secret': binance.secret,
+#     'timeout': 30000,
+#     'rateLimit': 2000,
+#     'enableRateLimit': True
+# })
+exchange = binance
 
+now = datetime.datetime.now()
+from_timestamp = exchange.parse8601(now)
 
-from_datetime = '2019-03-28 00:00:00'
-from_timestamp = exchange.parse8601(from_datetime)
-
-
-# now = datetime.datetime.now()
-# to_datetime = '{:%Y-%m-%d %H:%M:%S}'.format(now)
-
-# to_datetime = '2019-07-30 09:00:00'
-# to_timestamp = exchange.parse8601(to_datetime)
-
-# now = exchange.milliseconds()
 
 header = ['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume']
-
-query = {'market': market, 'symbol': symbol, 'timewindow': timewindow}
-old_df = pd.DataFrame(list(collection.find(query)))
-if not old_df.empty:
-    from_timestamp = old_df.Timestamp.max() + offset
 
 PREV_SIDE = "buy"
 # price in previous trade
 # PREV_PRICE = -1
-# PREV_PRICE = 0.0021131
 PREV_PRICE = 0.0021111
 # CLOSE_PRICE = -1
 
@@ -87,7 +69,7 @@ BTC_LIMIT = .0001
 
 
 def check_and_trade():
-    global binance, PREV_SIDE, PREV_PRICE, CLOSE_PRICE
+    global exchange, PREV_SIDE, PREV_PRICE, CLOSE_PRICE
     global fee
 
     if PREV_SIDE is "buy":
@@ -95,12 +77,12 @@ def check_and_trade():
         'now: sell when y_hat > y/(1 - fee)'
         if CLOSE_PRICE <= PREV_PRICE/(1.0 - fee):
             #print("Close price: {} Previous price: {}, still waiting for sell".format( CLOSE_PRICE, PREV_PRICE))
-            print("Close price: {} Previous price: {}, still waiting for sell {}%".format(
+            print("Close price: {} Previous price: {}, still waiting for sell {:.4}%".format(
                 CLOSE_PRICE, PREV_PRICE, (CLOSE_PRICE - PREV_PRICE)*100 / PREV_PRICE))
             return
         # amount = 1.0  # BNB
         # amount = max btc * price
-        amount = binance.fetch_balance().get('free').get('BNB')
+        amount = exchange.fetch_balance().get('free').get('BNB')
         if amount < BNB_LIMIT:
             print("Not enough to sell")
             return
@@ -108,7 +90,7 @@ def check_and_trade():
         print("------------------------------------------------------")
         print("SELLING BNB Close price: {} Previous price: {}".format(
             CLOSE_PRICE, PREV_PRICE))
-        order = binance.create_order(symbol, 'limit', 'sell', amount, price)
+        order = exchange.create_order(symbol, 'limit', 'sell', amount, price)
 
         PREV_SIDE = "sell"
         PREV_PRICE = CLOSE_PRICE
@@ -117,7 +99,7 @@ def check_and_trade():
         # if True:
         'now: buy when y_hat < y*(1 - fee)'
         if CLOSE_PRICE >= PREV_PRICE*(1.0 - fee):
-            print("Close price: {} Previous price: {}, still waiting for buy {}%".format(
+            print("Close price: {} Previous price: {}, still waiting for buy {:.4}%".format(
                 CLOSE_PRICE, PREV_PRICE, (CLOSE_PRICE - PREV_PRICE)*100 / PREV_PRICE))
             return
         # print("SELL PAIR")
@@ -138,11 +120,8 @@ def check_and_trade():
         PREV_PRICE = CLOSE_PRICE
 
 
-# while from_timestamp < to_timestamp:
 while True:
     try:
-        # print(exchange.milliseconds(), 'Fetching candles starting from', exchange.iso8601(from_timestamp))
-
         ohlcvs = exchange.fetch_ohlcv(symbol, timewindow, from_timestamp)
 
         while len(ohlcvs) == 0:
@@ -155,16 +134,6 @@ while True:
         if PREV_PRICE == -1:
             PREV_PRICE = ohlcvs[-1][4]
 
-        df_current = pd.DataFrame(ohlcvs, columns=header)
-        df_current['market'] = market
-        df_current['symbol'] = symbol
-        df_current['timewindow'] = timewindow
-        # convert df to list of dict
-        lst_dict = df_current.T.to_dict().values()
-
-        collection.insert_many(lst_dict)
-        # collection.update_many(lst_dict)
-        # collection.update_many(lst_dict, {upsert: True})
 
         print(exchange.milliseconds(), 'Fetched', len(ohlcvs), 'candles')
         if len(ohlcvs) > 0:
@@ -194,12 +163,3 @@ while True:
         print('Got an error', type(error).__name__,
               error.args, ', retrying in', offset, 'seconds...')
         # time.sleep(delay)
-
-
-# dumping
-
-# !ipython
-# i = 0
-# v = ohlcvs[i][0] / 1000
-# !date --date @{v} +"%Y-%m-%d %H:%M"
-# ohlcvs[i][1] # High

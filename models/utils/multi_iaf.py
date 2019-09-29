@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorpack import *
-from tf_utils.ar_layers import *
-from tf_utils.common import *
+from .tf_utils.ar_layers import *
+from .tf_utils.common import *
 
 def multi_iaf(self, z, reuse=False):
     with tf.variable_scope('multi_iaf', reuse=reuse):

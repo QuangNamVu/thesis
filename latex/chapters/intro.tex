@@ -1,28 +1,28 @@
-\chapter{Giới thiệu} 
+\chapter{Giới thiệu} \label{chap-Intro}
 \section{Giới thiệu đề tài nghiên cứu}
-Hiện nay, tiền mã hóa đã trở nên phổ biến, đa dạng với nhiều sàn giao dịch khác nhau. Đồng tiền mã hóa có tỷ giá thay đổi theo thời gian, việc tìm xu hướng giá ngắn hạn tính theo giờ phút không bị ảnh hưởng nhiều bởi các yếu tố bên ngoài như các dự báo, các quy định của chính phủ. Từ dữ liệu cụ thể là tổng hợp của các giao dịch trên các sàn trực tuyến việc tìm ra một giải thuật có thể dự đoán xu hướng giá của các giao dịch tiếp theo với nguyên tắc đề cao khách quan so với kinh nghiệm bản thân là một vấn đề mới mẻ. Vậy nên tôi quyết định chọn đề tài \textbf{Dự đoán xu hướng giá ngắn hạn các đồng tiền mật mã bằng kĩ thuật học máy}.
+Hiện nay, tiền mã hóa đã trở nên phổ biến, đa dạng với nhiều sàn giao dịch khác nhau. Đồng tiền mã hóa có tỷ giá thay đổi nhanh theo thời gian, việc tìm xu hướng giá ngắn hạn tính theo giờ phút không bị ảnh hưởng nhiều bởi các yếu tố bên ngoài như các dự báo, các quy định của chính phủ. Từ dữ liệu cụ thể là tổng hợp của các giao dịch trên các sàn trực tuyến việc tìm ra một giải thuật có thể dự đoán xu hướng giá của các giao dịch tiếp theo với nguyên tắc đề cao khách quan so với kinh nghiệm bản thân là một vấn đề mới mẻ. Vậy nên chúng tôi quyết định chọn đề tài \textbf{Dự đoán xu hướng giá ngắn hạn các đồng tiền mật mã bằng kĩ thuật học máy}.
 \section{Mục tiêu và phạm vi đề tài}
 \subsection{Mục tiêu}
-
 Mục tiêu của luận văn này là xây dựng một công cụ dự đoán xu hướng giá ngắn hạn các đồng tiền mật mã bằng kĩ thuật học máy. Dữ liệu đầu vào là các thông tin về lịch sử giá các  đồng tiền ảo trong các phiên giao dịch.
 
 \subsection{Phạm vi đề tài}
-\begin{itemize}
-\item Tìm hiểu và nghiên cứu về lý thuyết học máy thống kê (statistical machine learning)
-\item Xây dựng mô hình dự đoán vế xu hướng tăng giảm, dự đoán giá của các đồng trong thời gian ngắn hạn.
-\end{itemize}
-Các đối tượng nghiên cứu trong đề tài:
-\begin{itemize}
-\item Tìm hiểu một vài loại đồng tiền mã hóa, và các sàn giao dịch.
-\item Một vài tài liệu liên quan tới lý thuyết thống kê hiện đại.
-\item Tìm hiểu một vài mô hình trong học máy: hồi quy logistic, rừng ngẫu nhiên, mạng nơron.
-\item Sử dụng ngôn ngữ Python, R và một số thư viện để hiện thực mô hình.
-\item Xây dựng công cụ dự đoán giá một cách tự động.
-\end{itemize}
+Do trên thị trường hiện nay có nhiều sàn giao dịch khác nhau, sàn để nghiên cứu cần phải có tính thanh khoản cao với số lượng giao dịch nhiều, minh bạch về lịch sử giao dịch, ngoài ra sàn phải cung cấp lịch sử giá giữa các cặp đồng với nhau. Thông qua tìm hiểu sàn Binance được thành lập vào tháng 7/2017 là một trong những sàn uy tín với tính thanh khoản cao, số lượng giao dịch luôn nằm trong top 5 những sàn giao dịch trên thế giới, sàn cung cấp api để tra giá giao dịch, lịch sử giao dịch. Ngoài ra Binance còn cung cấp cho một tài khoản có thể tạo tối đa 200 tài khoản phụ (tính năng chỉ áp dụng cho tài khoản đặc biệt theo chính sách của sàn), điều này giúp việc so sánh các chiến lược giao dịch với nhau dựa trở nên dễ  dàng hơn khi giao dịch thực tế. Chính vì những lí do trên chúng tôi lựa chọn sàn Binance để nghiên cứu và triển khai các chiến lược trong tương lai.\\
+Về đối tượng đồng mã hóa, hiện nay có hơn 1600 loại đồng mã hóa nên việc lựa chọn các cặp đồng mã hóa được chúng tôi xếp theo lượng giao dịch trong ngày. Bitcoin và Ethereum là hai đồng có sức mua, bán cao nhất trên sàn Binance tính theo hai cặp tương ứng BTC/USDT và ETH/USDT. Ngoài ra sàn còn cung cấp đồng Binance (BNB) nằm trong top 10 khi xét về  khối lượng giao dịch, giao dịch các cặp khi có đồng này phí giao dịch sẽ được giảm xuống 25\%. Việc lựa chọn 2 đồng cơ bản là BTC, ETH ứng với 2 cặp sẽ được đề cập trong phần nghiên cứu. Trong tương lai khi so sánh thực nghiệm theo lợi nhuận đối với mỗi chiến lược sẽ bổ sung đồng BNB.
 
-\section{Tiến độ thực hiện}
-Trong phần này, tác giả xin trình bày lịch trình công việc đã thực hiện đề tài trong học
-kỳ I và lịch trình dự kiến hiện thực đề tài trong quá trình làm luận văn chính thức ở học
-kỳ II dưói dạng biểu đồ Gantt sau đây.
-
-\input{figures/gantt_plan}
+\section{Bố cục luận văn}
+Bố cục luận văn với nội dung tác giả trình bày được chia thành các phần sau đây:
+\begin{itemize}
+    \item \textbf{Chương \ref{chap-Intro}:} Giới thiệu đề tài.\\
+    Khái quát về vấn đề liên quan đến các chiến lược giao dịch và sự cần thiết của một hệ thống học máy trong mô hình dự đoán.
+    \item \textbf{Chương \ref{chap-Overview}:} Tổng quan về lĩnh vực nghiên cứu.\\
+    Tổng quan về  thị trường tiền mã hóa, nghiệp vụ giao dịch tiền mã hóa.
+    \item \textbf{Chương \ref{chap-Related_work}:} Các công trình liên quan.\\
+    Đưa ra một số các công trình xu hướng tăng giảm về giá của các đồng tiền mã hóa.
+    \item \textbf{Chương \ref{chap-Data}:} Chuẩn bị dữ liệu.\\
+    Trình bày quá trình thu thập dữ liệu, quá trình tiền xử lý dữ liệu cho bài toán học có giám sát.
+    \item \textbf{Chương \ref{chap-Research_method}, \ref{chap-Concept}:} Các phương pháp nghiên cứu, quá trình hiện thực.\\
+    Trình bày cách ứng dụng các chiến lược và các mô hình học máy được sử dụng trong việc dự đoán giá.
+    \item \textbf{Chương \ref{chap-Summary}:} Tổng kết.\\
+    Kết quả đạt được, những hạn chế của các chiến lược mô hình đã được sử dụng và hướng phát triển hệ thống trong tương lai.
+    
+\end{itemize}

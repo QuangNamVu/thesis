@@ -1,0 +1,7 @@
+# https://math.stackexchange.com/questions/94414/an-algorithm-for-arbitrage-in-currency-exchange
+
+Conceptually, it is easier to think of the “log-exchange rates” defined by L[i,j]=−logR[i,j]. (The negative sign is just for the sake of convention.) Now imagine a directed graph with the currencies as the vertices where the weight of the edge (i,j) is L[i,j]. In terms of the new quantity we just introduced, we are seeking a cycle (i1,i2,…,ik) such that
+∑t=1k−1L[it,it+1]+L[ik,i1]<0.
+This equation is obtained by just taking the log of the given equation, and reversing the sign. That is, we are seeking a “negative weight cycle” in the graph, where the weight of a cycle is just the sum of the edges in the cycle.
+
+Negative cycle detection is a standard problem in algorithmic graph theory, conventionally studied along with the shortest path problem. [The shortest path problem is the following: given a directed graph with a source and a sink terminal, find the path of least cost from the source to the sink.] A number of algorithms have been designed to solve these problems. The simplest one (in general graphs) is the Bellman-Ford algorithm which runs in O(|V||E|).

@@ -15,12 +15,6 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: thesis-blx.bib
 Database file #2: bibliography.bib
-I was expecting a `,' or a `}'---line 37 of file bibliography.bib
- :  
- :  url = "https://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf"
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "1"
 Biblatex version: 3.3
 Too many commas in name 1 of "Jordan, M.I., Ghahramani, Z., Jaakkola, T.S." for entry intro_variational
 while executing---line 2513 of file biblatex.bst
@@ -314,43 +308,43 @@ Too many commas in name 1 of "Jordan, M.I., Ghahramani, Z., Jaakkola, T.S." for 
 while executing---line 2659 of file biblatex.bst
 You've used 6 entries,
             6047 wiz_defined-function locations,
-            1156 strings with 8831 characters,
-and the built_in function-call counts, 14497 in all, are:
+            1157 strings with 8964 characters,
+and the built_in function-call counts, 14551 in all, are:
 = -- 547
 > -- 466
 < -- 142
 + -- 132
-- -- 150
-* -- 830
-:= -- 1014
+- -- 154
+* -- 839
+:= -- 1017
 add.period$ -- 0
 call.type$ -- 6
 change.case$ -- 63
 chr.to.int$ -- 34
 cite$ -- 10
-duplicate$ -- 1591
-empty$ -- 1602
+duplicate$ -- 1596
+empty$ -- 1610
 format.name$ -- 242
-if$ -- 3339
+if$ -- 3347
 int.to.chr$ -- 0
 int.to.str$ -- 12
 missing$ -- 0
-newline$ -- 115
+newline$ -- 119
 num.names$ -- 227
-pop$ -- 1636
+pop$ -- 1634
 preamble$ -- 1
 purify$ -- 68
 quote$ -- 0
 skip$ -- 911
 stack$ -- 0
-substring$ -- 274
-swap$ -- 479
+substring$ -- 278
+swap$ -- 485
 text.length$ -- 141
 text.prefix$ -- 5
 top$ -- 1
 type$ -- 216
 warning$ -- 0
-while$ -- 135
+while$ -- 136
 width$ -- 0
-write$ -- 108
-(There were 145 error messages)
+write$ -- 112
+(There were 144 error messages)

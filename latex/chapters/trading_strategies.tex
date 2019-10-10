@@ -1,0 +1,85 @@
+\chapter{Đánh giá thị trường thông qua hai chiến lược}
+\label{chap-trading_strategies}
+Với dữ liệu được lấy từ sàn, có thể tạo một đánh giá thị trường với giao dịch ngắn hạn có tiềm năng hay không? Từ đó có thể tạo ra công cụ với khả năng dự đoán để tự động giao dịch không?  Nhằm trả lời cho hai câu hỏi trên, trong chương này sẽ đề cập tới hai phần chính:
+
+\begin{itemize}
+    \item Các chiến lược cơ bản được đề ra trong phần \ref{trading_strategy} và mô phỏng hai chiến lược trên dữ liệu đã có. Ứng dụng các mô hình học máy để dự đoán xu hướng giá.
+    \item  Đánh giá rủi ro của hai chiến lược thông qua giá có trước, từ đó nhận định tiềm năng của thị trường.
+    \end{itemize}
+\section{Các chiến lược giao dịch ngắn hạn}\label{strategy_describing}
+
+\subsection{Chiến lược giao dịch cùng một loại cặp đồng}\label{describe_strategy_1}
+Khi giao dịch cùng một loại cặp đồng A/B theo thời gian khác nhau, đặt lệnh mua hay đổi đồng B để mua A khi tỷ giá A/B có xu hướng giảm ngược lại đặt lệnh bán khi tỷ giá có xu hướng tăng. Chiến lược này sẽ không hiệu quả khi giá ở mỗi phiên không chênh lệch nhau nhiều đặc biệt có trường hợp lỗ khi mỗi lần giao dịch sễ mất tiền phí do bên sàn thu. Vì vậy chiến lược nói trên sẽ được thêm một ràng buộc là  ngưỡng phí giao dịch $\epsilon$ và các biến:
+\begin{itemize}
+    \item $W^a_t$: số đồng A quy ra B theo giá tại thời điểm $t$.
+    \item $W^b_t$: số đồng B quy ra A theo giá tại thời điểm $t$.
+    \item $y_t$: tỷ giá đồng A/B tại thời điểm $t$.
+    \item $a$, $b$: số đồng A, số đồng B trong ví tại thời điểm đang xét.
+\end{itemize}
+Với $t$ là thời điểm gần nhất giao dịch, xét tại thời điểm $\tau$ xảy ra sau đó, Việc đặt lệnh mua phải thỏa yêu cầu sau:
+$W^a_\tau > W^a_t$ hay
+$\frac{b}{y_\tau}(1-\epsilon)$ > $\frac{b}{y_t}$ hay $y_\tau < y_t(1 -\epsilon)$  \\
+Tương tự, việc đặt lệnh bán phải thỏa yêu cầu sau:
+$W^b_\tau > W^b_t$ hay
+$a (1 - \epsilon) y_\tau > ay$ hay $y_\tau(1 -\epsilon) > y_t $ \\
+
+Việc mô phỏng chiến lược này cần tuân theo ràng buộc của sàn như sau: đơn vị tối thiểu là 0.000001 BTC và 0.01 USDT ví dụ muốn mua cặp đồng trên khi có 1.234 USDT với số lượng tối đa phí giao dịch sẽ là 0.1\% với giá khớp lệnh là 8000 số lượng USDT còn lại trong ví là 0.004 số lượng giao dịch sẽ là 1.23 USDT, số lượng BTC nhận vào ví là $1.23/8000*(1-0.1/100) = 0.00015359625$.\\
+
+Khi thực hiện khảo sát chiến lược này với dữ liệu thu được trên sàn Binance với cặp đồng BTC/USDT trong khoảng thời gian từ 2017-08-17
+đến 2019-09-01, giả sử số tiền trong ví ban đầu là 1.0 USDT các ngưỡng phí  $\epsilon$ được thay đổi cho ra kết quả được thống kê trong bảng sau:
+\begin{table}[ht]
+\caption{Nonlinear Model Results} % title of Table
+\centering % used for centering table
+\begin{tabular}{c c c c c} % centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+Thời gian bắt đầu & Ngưỡng phí(\%) & Số lần giao dịch & Tổng USDT đầu & Tổng USDT sau \\ [0.5ex] % /home/nam/Dropbox/thesis/src/strategy_POC/notebook/.ipynb_checkpoints/Strategy_01-POC-report-checkpoint.ipynb
+
+\hline % inserts single horizontal line
+2017-08-28 13:00:00 & 0.1 & 129 & 4221.04 & 2193.22 \\ % inserting body of the table
+2017-08-28 13:00:00 & 0.2 & 129 & 4221.04 & 2290.84 \\
+2017-08-28 13:00:00 & 5 & 17 & 4221.04 & 6632.89 \\
+2017-08-28 13:00:00 & 10 & 7 & 4221.04 & 6133.60 \\
+
+2017-12-11 01:00:00 & 0.1 & 80 & 14975.03 & 9721.09 \\
+2017-12-11 01:00:00 & 0.2 & 82 & 14975.03 & 9884.65 \\
+2017-12-11 01:00:00 & 5 & 22 & 14975.03 & 17373.62 \\
+2017-12-11 01:00:00 & 10 & 6 & 14975.03 & 13452.00 \\[1ex] % [1ex] adds vertical space
+
+% 2017-08-28 13:00:00 & 0.12 & 139 & 4221.04 & 2007.70 \\ [1ex] % [1ex] adds vertical space
+
+
+\hline %inserts single line
+\end{tabular}
+\label{table:nonlin} % is used to refer this table in the text
+\end{table}
+
+Chiến lược trên tuy đảm bảo khi đổi giữa hai lần xen kẽ nhau, số đồng được tăng lên, % TODO 
+
+% http://localhost:8888/notebooks/notebook/Strategy_01-POC-report.ipynb 
+% Trade log -> Timestamp ->
+nhìn thấy của chiến lược này là không biết trước giá của phiên giao dịch tiếp theo. Tuy nhiên cụ thể với ngày xxxx giá đạt ngưỡng cao nhất khi đó theo chiến lược, đổi hết đồng BTC sang thành USDT, tiếp theo giá giảm đều và qua ngưỡng phí và tiếp tục giảm, khi này số đồng USDT đã được chuyển sang BTC số lượng đồng BTC so với thời điểm trước khi bán ban đầu là nhiều hơn, khi giá tiếp tục giảm lệnh mua sẽ không được thực hiện do đã hết đồng USDT phải chờ đến khi giá tăng so với lần mua tại ngày xxxxx. Điều này dẫn tới việc tính theo giá USDT tổng giá trị BTC là giảm từ 14975.03 USDT xuống 13452 USDT. Để giảm rủi ro này, ta có thể dự đoán xu hướng giá đóng của phiên giao dịch kế tiếp tức xxxxx, nếu giá có xu hướng giảm, lệnh mua sẽ được giữ lại tới khi giá có xu hướng tăng. Đây chính là ý tưởng chính cho việc hình thành bài toán dự đoán xu hướng giá ngắn hạn, các mô hình sẽ được học từ các phiên giao dịch trước và dự đoán xu hướng giá của phiên giao dịch sau. Việc đánh nhãn cho dữ liệu sẽ được trình bày trong mục \ref{data-labeling}.
+ % TODO tạo bảng 
+ 
+ % TODO histogram trên notebook
+ 
+ \subsection{Chiến lược giao dịch nhiều loại cặp đồng}
+  Với 3 đồng là A, B, C, việc chuyển đồng A chuyển sang đồng B, chuyển đồng B sang đồng C và cuối cùng chuyển lại đồng C sang đồng A tạo thành một vòng lặp, việc đồng A tăng lên hoặc giảm đi có thể xảy ra. Trong cùng một phiên giao dịch, việc tìm vòng lặp như trên sao cho số lượng đồng A được tăng lên so với trước đòi hỏi các lần chuyển đổi giữa các cặp diễn ra liên tục và có thứ tự nói cách khác tất cả các lần giao dịch đều phải được hoàn thành, đây cũng là nhược điểm của chiến lược này vì trong khi biết giá của các giao dịch trước, giá của các cặp sẽ đổi khi thực hiện giao dịch đòi hỏi giao dịch phải diễn ra nhanh.
+  Lấy ví dụ ở thời điểm lúc 8 giờ ngày 04/01/2018 xét 3 cặp đồng là BTC/USDT, ETH/BTC, ETH/USDT có tỉ giá tương ứng là 15172.12, 0.060893, 920.08 với phí giao dịch cho mỗi lần trao đổi mặc định là 0.1\% đối với sàn Binance, với 1.0 USDT lần lượt đổi các cặp là USDT sang ETH, ETH sang BTC và BTC sang USDT số đồng USDT thu về trong ví là 1.0011162574497365 với giả thiết ở mỗi giao dịch đều đổi hết (bỏ qua ràng buộc về số đồng tối thiểu). Trong ví dụ này với 3 đồng trên ta có thể thấy một cách trực quan rằng số đồng USDT tăng sau một vòng chuyển đổi. Việc tìm các vòng chuyển đổi tại mỗi thời điểm như trên có thể  được mô hình hóa bằng bài toán như sau:
+  \input{figures/pseudocode_strategy_02}
+  Thống kê với phí giao dịch mặc định là 0.1\% đối với sàn Binance từ 2018-01-01 đến 2019-09-21 gồm 15000 phiên giao dịch với khoảng thời gian mỗi phiên là 1 giờ xét trên 3 đồng BTC, ETH, USDT được thu thập từ 3 cặp: USDT/ETH, ETH/BTC, BTC/USDT đưa ra 75 lần đồ thị tồn tại chu trình âm. Khi thêm đồng BNB đồ thị với 4 loại đồng gồm 6 cặp, con số này đạt 1027 lần.
+  % TODO: notebook tăng eps, tăng số đồng -> tạo bảng
+  
+  Với chiến lược đổi trên nhiều đồng này, khi tăng số lượng đồng, việc giao dịch theo chiến lược này trở lên khó khăn hơn vì khi duyệt chu trình, tất cả các cạnh đều phải đi qua, nói cách khác các lần đổi đều phải hoàn thành. Tuy nhiên khi đổi, giá của hai đồng sẽ không giữ nguyên như giá hiện tại, việc khớp giá sẽ khó xảy ra, vậy nên bổ sung mô hình dự đoán xu hướng giá của phiên giao dịch tiếp theo có thể hỗ trợ thêm cho chiến lược này.
+  
+  \section{Rủi ro và tiềm năng của thị trường}
+  
+  Trong phần \ref{describe_strategy_1} với giao dịch trên một cặp đồng, rủi ro và tiềm năng của chiến lược này phụ thuộc vào thị trường và ngưỡng phí cho trước, lệnh giao dịch được đưa ra dựa trên giá hiện tại, bổ sung cho chiến lược này khi biết chính xác xu hướng giá cần và
+  
+  % TODO
+%   số lần chạy| Thời gian bắt đầu| Tỷ lệ dự đoán |profit  min | profit max | avg profit
+
+Với giao dịch trên nhiều đồng các thông số
+% TODO
+%   số lần chạy| Thời gian bắt đầu| Số sau 3 giao dịch |Số sau 5 giao dịch| Số giao dịch tiếp theo trung bình
+
+

@@ -8,12 +8,15 @@
 %\usepackage[utf8]{inputenc}
 %\usepackage[francais]{babel}
 %\usepackage[margin=0.5in]{geometry}
+
+
 \usepackage{geometry}
 \usepackage{a4wide,amssymb,epsfig,latexsym,multicol,array,hhline}
 \usepackage{lastpage}
 \usepackage{emptypage}
 \usepackage{pdfpages}
 \usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{algpseudocode} %http://ctan.org/pkg/algorithmicx
 \usepackage{enumerate}
 \usepackage{color}
 \usepackage{spverbatim}
@@ -37,14 +40,19 @@
 \usepackage{hyperref}
 % check reference if not cite
 %\usepackage{refcheck}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+
 \usepackage{cleveref}
+
+\usepackage{amssymb}
+\usepackage{tabularx}
+
 \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
 \usepackage{shapepar}
 \usepackage{titlesec}
 \usepackage{mdframed}
-\usepackage{mathtools}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{changepage}
 % pseudocode
 \usepackage[lined,boxed,commentsnumbered]{algorithm2e}
@@ -52,6 +60,8 @@
 \usepackage{qtree}
 \usepackage{pgfgantt}
 \usepackage{pgfplots}
+% \pgfplotsset{compat=1.16}
+
 \usepackage{tkz-euclide}
 \usepackage{accents}
 \usepackage{setspace}
@@ -62,7 +72,7 @@
 \usetikzlibrary{arrows,snakes,backgrounds,automata,positioning,trees,shapes,calc,through,bending}
 \usetikzlibrary{datavisualization}
 \usetikzlibrary{datavisualization.formats.functions}
-\usepackage{movie15}
+\usepackage{media9}
 \usepackage{pst-plot}
 \usepackage[numbered]{bookmark}
 \usepackage{tocloft}
@@ -77,9 +87,10 @@
 %\usepackage{pstcol} 								% PSTricks with the standard color package
 
 %\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
-%\usepackage[autostyle=true]{csquotes}
+% \usepackage[autostyle=true]{csquotes}
 %,citestyle=numeric
 \usepackage[backend=bibtex]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+% \usepackage{csquotes}
 
 \addbibresource{bibliography.bib}
 

@@ -1,2 +1,6 @@
 Gemfile.lock
 requirements.txt
+*.log
+*.aux
+*.lof
+*.lot

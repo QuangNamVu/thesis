@@ -1,0 +1,31 @@
+\narrowlinespacing
+
+\begin{table}[H] 
+    \centering
+
+    \begin{tabularx}{0.9\textwidth}{
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 1
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 2
+    p{\dimexpr.25\linewidth-2\tabcolsep-1.0\arrayrulewidth}
+    p{\dimexpr.25\linewidth-2\tabcolsep-1.0\arrayrulewidth}
+    }
+        
+        \toprule\midrule
+        \textbf{} & \textbf{} & \multicolumn{2}{c}{\textbf{Kết quả dự đoán}} \\
+        % \midrule
+        \cmidrule(rl){3-4}
+        \textbf{} & \textbf{} & \textbf{Giá tăng} & \textbf{Giá giảm} \\
+        \midrule
+        \multirow{2}{*}{\textbf{Nhãn thực tế }}  & \textbf{Giá tăng} & True Positive (TP) & 
+        False Positive (FP)\\
+        & \textbf{Giá giảm} & False Negative (FN) & True Negative (TN) \\
+        % \hline
+        \midrule
+        \bottomrule
+        
+    \end{tabularx}
+    \label{tab:confusion_matrix}
+    \caption{Ma trận nhầm lẫn  cho các nhãn dữ liệu}
+\end{table}
+
+\normallinespacing

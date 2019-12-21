@@ -1,0 +1,41 @@
+\narrowlinespacing
+
+\begin{table}[H] 
+    \centering
+
+    \begin{tabularx}{0.7\textwidth}{
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 1
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 2
+    p{\dimexpr.15\linewidth-2\tabcolsep-1.0\arrayrulewidth}
+    p{\dimexpr.15\linewidth-2\tabcolsep-1.0\arrayrulewidth}
+    }
+        
+        \toprule\midrule
+        \textbf{} & \textbf{} & \multicolumn{2}{c}{\textbf{Kết quả dự đoán}} \\
+        % \midrule
+        \cmidrule(rl){3-4}
+        \textbf{} & \textbf{} & \textbf{Giá giảm} & \textbf{Giá tăng} \\
+        \midrule
+        % \hline
+        
+        %[[682 423]
+        %   [393 662]] -> 0.6222222222222222
+        
+%         % 3 months
+        % [[7592 5462]
+        %  [4420 8446]] -> 0.61875
+        \multirow{2}{*}{\textbf{Nhãn thực tế }}  & \textbf{Giá giảm} & 487 & 562\\
+        & \textbf{Giá tăng} & 388 & 723 \\
+        
+        % [[487 562]
+        %  [388 723]]
+        % \hline
+        \midrule
+        \bottomrule
+        
+    \end{tabularx}
+    \label{tab:rf_confusion_matrix}
+    \caption{Ma trận nhầm lẫn từ mô hình rừng ngẫu nhiên}
+\end{table}
+
+\normallinespacing

@@ -28,11 +28,11 @@ Việc mô phỏng chiến lược này cần tuân theo ràng buộc của sàn
 Khi thực hiện khảo sát chiến lược này với dữ liệu thu được trên sàn Binance với cặp đồng BTC/USDT trong khoảng thời gian từ 2017-08-17
 đến 2019-09-01, giả sử số tiền trong ví ban đầu là 1.0 USDT các ngưỡng phí  $\epsilon$ được thay đổi cho ra kết quả được thống kê trong bảng sau:
 \begin{table}[ht]
-\caption{Nonlinear Model Results} % title of Table
+\caption{Mô phỏng chiến lược giao dịch một cặp đồng theo thời gian} % title of Table
 \centering % used for centering table
 \begin{tabular}{c c c c c} % centered columns (4 columns)
 \hline\hline %inserts double horizontal lines
-Thời gian bắt đầu & Ngưỡng phí(\%) & Số lần giao dịch & Tổng USDT đầu & Tổng USDT sau \\ [0.5ex] % /home/nam/Dropbox/thesis/src/strategy_POC/notebook/.ipynb_checkpoints/Strategy_01-POC-report-checkpoint.ipynb
+Thời gian bắt đầu & Ngưỡng phí (\%) & Số lần giao dịch & Tổng USDT đầu & Tổng USDT sau \\ [0.5ex] % /home/nam/Dropbox/thesis/src/strategy_POC/notebook/.ipynb_checkpoints/Strategy_01-POC-report-checkpoint.ipynb
 
 \hline % inserts single horizontal line
 2017-08-28 13:00:00 & 0.1 & 129 & 4221.04 & 2193.22 \\ % inserting body of the table
@@ -53,11 +53,9 @@ Thời gian bắt đầu & Ngưỡng phí(\%) & Số lần giao dịch & Tổng 
 \label{table:nonlin} % is used to refer this table in the text
 \end{table}
 
-Chiến lược trên tuy đảm bảo khi đổi giữa hai lần xen kẽ nhau, số đồng được tăng lên, % TODO 
-
 % http://localhost:8888/notebooks/notebook/Strategy_01-POC-report.ipynb 
 % Trade log -> Timestamp ->
-nhìn thấy của chiến lược này là không biết trước giá của phiên giao dịch tiếp theo. Tuy nhiên cụ thể với ngày xxxx giá đạt ngưỡng cao nhất khi đó theo chiến lược, đổi hết đồng BTC sang thành USDT, tiếp theo giá giảm đều và qua ngưỡng phí và tiếp tục giảm, khi này số đồng USDT đã được chuyển sang BTC số lượng đồng BTC so với thời điểm trước khi bán ban đầu là nhiều hơn, khi giá tiếp tục giảm lệnh mua sẽ không được thực hiện do đã hết đồng USDT phải chờ đến khi giá tăng so với lần mua tại ngày xxxxx. Điều này dẫn tới việc tính theo giá USDT tổng giá trị BTC là giảm từ 14975.03 USDT xuống 13452 USDT. Để giảm rủi ro này, ta có thể dự đoán xu hướng giá đóng của phiên giao dịch kế tiếp tức xxxxx, nếu giá có xu hướng giảm, lệnh mua sẽ được giữ lại tới khi giá có xu hướng tăng. Đây chính là ý tưởng chính cho việc hình thành bài toán dự đoán xu hướng giá ngắn hạn, các mô hình sẽ được học từ các phiên giao dịch trước và dự đoán xu hướng giá của phiên giao dịch sau. Việc đánh nhãn cho dữ liệu sẽ được trình bày trong mục \ref{data-labeling}.
+Hạn chế dễ thấy của chiến lược này là không biết trước giá của phiên giao dịch tiếp theo. Cụ thể với ngày xxxx giá đạt ngưỡng cao nhất khi đó theo chiến lược, đổi hết đồng BTC sang thành USDT, tiếp theo giá giảm đều và qua ngưỡng phí và tiếp tục giảm, khi này số đồng USDT đã được chuyển sang BTC số lượng đồng BTC so với thời điểm trước khi bán ban đầu là nhiều hơn, khi giá tiếp tục giảm lệnh mua sẽ không được thực hiện do đã hết đồng USDT phải chờ đến khi giá tăng so với lần mua tại ngày xxxxx. Điều này dẫn tới việc tính theo giá USDT tổng giá trị BTC là giảm từ 14975.03 USDT xuống 13452 USDT. Để giảm rủi ro này, ta có thể dự đoán xu hướng giá đóng của phiên giao dịch kế tiếp tức xxxxx, nếu giá có xu hướng giảm, lệnh mua sẽ được giữ lại tới khi giá có xu hướng tăng. Đây chính là ý tưởng chính cho việc hình thành bài toán dự đoán xu hướng giá ngắn hạn, các mô hình sẽ được học từ các phiên giao dịch trước và dự đoán xu hướng giá của phiên giao dịch sau. Việc đánh nhãn cho dữ liệu sẽ được trình bày trong mục \ref{data-labeling}.
  % TODO tạo bảng 
  
  % TODO histogram trên notebook

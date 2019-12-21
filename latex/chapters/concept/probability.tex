@@ -1,4 +1,6 @@
 \section{Các khái niệm về xác suất}
+
+
 \subsection{Hàm mật độ xác suất (Probability density function)}
 Với các phiên giao dịch có các thành phần như giá mở, giá đóng, số lượng đồng giao dịch,\dots, ta có thể coi như các biến ngẫu nhiên liên tục tương ứng. Khái niệm hàm mật độ xác suất trong văn cảnh trên được hiểu như một hàm gồm các tham số thể hiện được mật độ phân bố của các biến ngẫu nhiên.
 \begin{figure}[hbt!]
@@ -56,3 +58,5 @@ hay:\\
 $\log(P(x)) = \Dkl{P}{Q} - \mathbb{E}_{Q(z)} [\log \frac{Q(z)}{P(z , x)}]
 = \Dkl{P}{Q} + \mathcal{L}(Q)
 $
+\subsection{Nhiễu (Noise)} \label{concept:noise}
+Trong tài chính khái niệm nhiễu có quan hệ đối lập với khái niệm thông tin (information), với dữ liệu cung cấp đầy đủ thông tin, việc dự đoán dễ dàng và ngược lại với dữ liệu có nhiễu cao do bị ảnh hưởng bởi các yếu tố khác như đã đề cập tại phần \ref{overview:market-noise} do các lệnh mua bán trong tương lai không tuân theo các quy luật từ giao dịch trước đó. Việc khử nhiễu dữ liệu là loại bỏ các yếu tố trên, nhằm cho việc tìm luật chung được dễ dàng hơn. %tìm một luật chung cho dữ liệu (pattern) sao cho trên tập kiểm thử vẫn tuân theo pattern của các phiên giao dịch trước.

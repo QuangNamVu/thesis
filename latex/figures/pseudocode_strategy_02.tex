@@ -1,13 +1,13 @@
 \begin{algorithm}[H]
-	\KwData{T phiên giao dịch gồm tổng quát $\frac{N(N-1)}{2}$ cặp tương ứng với N đồng}
+	\KwData{$T$ phiên giao dịch; $\frac{N(N-1)}{2}$ cặp tương ứng với $N$ đồng}
 	\KwResult{Số lần xuất hiện vòng có xu hướng làm tăng số lượng đồng ban đầu}
 	\textbf{Khởi tạo:}\\
 	
 	\begin{itemize}
 		\item Đồ thị hai phía đầy đủ.
-		\item Tensor $M$ kích thước TxNxN chứa giá trị của T phiên giao dịch.
+		\item Tensor $M$ kích thước $TxNxN$ chứa thông số của $T$ phiên giao dịch.
 		\item Phí giao dịch $\epsilon$.
-		\item t = 0
+		\item $t = 0$.
 	\end{itemize}
 	\For{t trong T}{
 		Cập nhật trọng số của đồ thị\\
@@ -15,16 +15,15 @@
 		$d(B,A) \gets 1e-20$\\
 		
 		\For{u, v trong $M_t$}{
-		    $d(u,v) \gets -log(d(u,v)) - log(\epsilon))$
+			$d(u,v) \gets -log(d(u,v)) - log(\epsilon))$ \Comment{Chuyển sang giá trị logarit}
 		}
-		\Comment{Chuyển giá sang giá trị logarit}
-        
-        \If{Đồ thị có trọng số âm}{
-            % $t.insert(1)$
-            $t \gets t + 1$\\
+	
+		
+		\If{Đồ thị có trọng số âm}{
+			% $t.insert(1)$
+			$t \gets t + 1$\\
 			Tìm chu trình nhỏ nhất không lặp.
 		}
-	}
-	
+	}	
 	\caption{Tìm số lượng phiên giao dịch có thể  làm tăng số đồng ban đầu.}
 \end{algorithm}

@@ -1,28 +1,53 @@
 \chapter{Giới thiệu} \label{chap-Intro}
 \section{Giới thiệu đề tài nghiên cứu}
-Hiện nay, tiền mã hóa đã trở nên phổ biến, đa dạng với nhiều sàn giao dịch khác nhau. Đồng tiền mã hóa có tỷ giá thay đổi nhanh theo thời gian, việc tìm xu hướng giá ngắn hạn tính theo giờ phút không bị ảnh hưởng nhiều bởi các yếu tố bên ngoài như các dự báo, các quy định của chính phủ. Từ dữ liệu cụ thể là tổng hợp của các giao dịch trên các sàn trực tuyến việc tìm ra một giải thuật có thể dự đoán xu hướng giá của các giao dịch tiếp theo với nguyên tắc đề cao khách quan so với kinh nghiệm bản thân là một vấn đề mới mẻ. Vậy nên chúng tôi quyết định chọn đề tài \textbf{Dự đoán xu hướng giá ngắn hạn các đồng tiền mật mã bằng kĩ thuật học máy}.
+Hiện nay, tiền mã hóa đã dần trở nên phổ biến và được sử dụng trên nhiều sàn giao dịch. Từ đó có thể dễ dàng mua bán, trao đổi trực tuyến, nhanh chóng. Với số lượng giao dịch ngày càng tăng, tỷ giá giữa các đồng liên tục thay đổi. Trong việc đầu tư, nhu cầu kiểm soát các rủi ro cũng như tính toán lợi nhuận được đặt lên hàng đầu.
+Khi xét trên phương diện thời gian, chiến lược đầu tư được chia thành hai loại chính là đầu tư dài hạn và đầu tư ngắn hạn.
+% https://www.edwardjones.ca/financial-focus/investment-topics/short-term-vs-long-term-investments.html
+% So với việc đầu tư dài hạn, đầu tư ngắn hạn ít bị ảnh hưởng bởi thị trường song song là rủi ro cao hơn khi giá đồng tiền bị lạm phát và một phần từ khoản phí giao dịch.
+%TODO trong đề tài trên -> đầu tư ngắn hạn -> reduce risk kiểm soát rủi ro
+Để kiểm soát được các rủi ro trong việc đầu tư ngắn hạn, cần các công cụ dự đoán giá, xu hướng giá trong các phiên giao dịch tiếp theo. Từ dữ liệu cụ thể là tổng hợp của các giao dịch trên các sàn trực tuyến việc tìm ra một giải thuật có thể dự đoán xu hướng giá của các giao dịch tiếp theo với nguyên tắc đề cao khách quan so với kinh nghiệm bản thân là một vấn đề mới mẻ. Vậy nên chúng tôi quyết định chọn đề tài \textbf{Dự đoán xu hướng giá ngắn hạn các đồng tiền mật mã bằng kĩ thuật học máy}.
 \section{Mục tiêu và phạm vi đề tài}
-\subsection{Mục tiêu}
-Mục tiêu của luận văn này là xây dựng một công cụ dự đoán xu hướng giá ngắn hạn các đồng tiền mật mã bằng kĩ thuật học máy. Dữ liệu đầu vào là các thông tin về lịch sử giá các  đồng tiền ảo trong các phiên giao dịch.
 
-\subsection{Phạm vi đề tài}
-Do trên thị trường hiện nay có nhiều sàn giao dịch khác nhau, sàn để nghiên cứu cần phải có tính thanh khoản cao với số lượng giao dịch nhiều, minh bạch về lịch sử giao dịch, ngoài ra sàn phải cung cấp lịch sử giá giữa các cặp đồng với nhau. Thông qua tìm hiểu sàn Binance được thành lập vào tháng 7/2017 là một trong những sàn uy tín với tính thanh khoản cao, số lượng giao dịch luôn nằm trong top 5 những sàn giao dịch trên thế giới, sàn cung cấp api để tra giá giao dịch, lịch sử giao dịch. Ngoài ra Binance còn cung cấp cho một tài khoản có thể tạo tối đa 200 tài khoản phụ (tính năng chỉ áp dụng cho tài khoản đặc biệt theo chính sách của sàn), điều này giúp việc so sánh các chiến lược giao dịch với nhau dựa trở nên dễ  dàng hơn khi giao dịch thực tế. Chính vì những lí do trên chúng tôi lựa chọn sàn Binance để nghiên cứu và triển khai các chiến lược trong tương lai.\\
-Về đối tượng đồng mã hóa, hiện nay có hơn 1600 loại đồng mã hóa nên việc lựa chọn các cặp đồng mã hóa được chúng tôi xếp theo lượng giao dịch trong ngày. Bitcoin và Ethereum là hai đồng có sức mua, bán cao nhất trên sàn Binance tính theo hai cặp tương ứng BTC/USDT và ETH/USDT. Ngoài ra sàn còn cung cấp đồng Binance (BNB) nằm trong top 10 khi xét về  khối lượng giao dịch, giao dịch các cặp khi có đồng này phí giao dịch sẽ được giảm xuống 25\%. Việc lựa chọn 2 đồng cơ bản là BTC, ETH ứng với 2 cặp sẽ được đề cập trong phần nghiên cứu. Trong tương lai khi so sánh thực nghiệm theo lợi nhuận đối với mỗi chiến lược sẽ bổ sung đồng BNB.
+\subsection{Đối tượng nghiên cứu}
+Đề tài gồm ba đối tượng nghiên cứu như sau:
+\begin{itemize}
+    \item Đồng tiền nghiên cứu.
+    \item Chiến lược ngắn hạn.
+    \item Các mô hình học máy cho dữ liệu thời gian.
+\end{itemize}
+
+\subsection{Phạm vi nghiên cứu}
+\textbf{Về đối tượng sàn mã hóa:} Hiện nay, trên thị trường hiện nay có nhiều sàn giao dịch khác nhau. Để giới hạn phạm vi, đối tượng sàn để nghiên cứu cần phải bao gồm các tiêu chí như tính thanh khoản cao với số lượng giao dịch nhiều, minh bạch về lịch sử giao dịch, ngoài ra sàn phải cung cấp lịch sử giá giữa các cặp đồng với nhau. Thông qua tìm hiểu, sàn \textit{Binance} được thành lập vào tháng 7/2017 là một trong những sàn uy tín với tính thanh khoản cao (số lượng giao dịch luôn nằm trong top 5 những sàn giao dịch trên thế giới), sàn cung cấp api để tra cứu giá giao dịch, lịch sử giao dịch. Ngoài ra sàn \textit{Binance} còn cung cấp cho một tài khoản có thể tạo tối đa 200 tài khoản phụ (tính năng chỉ áp dụng cho tài khoản đặc biệt theo chính sách của sàn), điều này giúp việc so sánh các chiến lược giao dịch với nhau dựa trở nên dễ  dàng hơn khi giao dịch thực tế. Chính vì những lí do trên chúng tôi lựa chọn sàn \textit{Binance} để nghiên cứu và triển khai các chiến lược sau này.
+
+\textbf{Về đối tượng đồng mã hóa:} Hiện nay có hơn 4939 loại đồng mã hóa \footnote{\url{https://coinmarketcap.com/all/views/all/} cập nhật vào ngày 2019/
+09/16} nên việc lựa chọn các cặp đồng mã hóa được chúng tôi xếp theo lượng giao dịch trong ngày. \textit{Bitcoin} và \textit{Ethereum} là hai đồng có sức mua, bán cao nhất trên sàn Binance tính theo hai cặp tương ứng \textit{BTC/USDT} và \textit{ETH/USDT}. Ngoài ra sàn còn cung cấp đồng Binance (BNB) nằm trong top 10 khi xét về  khối lượng giao dịch, giao dịch các cặp khi có đồng này phí giao dịch sẽ được giảm xuống 25\%. Việc lựa chọn 2 đồng cơ bản là BTC, ETH ứng với 2 cặp sẽ được đề cập trong phần nghiên cứu. Trong tương lai khi so sánh thực nghiệm theo lợi nhuận đối với mỗi chiến lược sẽ bổ sung đồng BNB.
+
+\subsection{Phương pháp nghiên cứu}
+Trong quá trình nghiên cứu, nhóm có ba công việc chính cần giải quyết:
+\begin{itemize}
+    \item Thu thập dữ liệu từ sàn.
+    \item Thống kê dữ liệu đã thu thập.
+    \item Nghiên cứu những mô hình cho việc dự đoán trên dữ liệu thời gian. Thí nghiệm mô hình trên dữ liệu đã được thu thập.
+\end{itemize}
 
 \section{Bố cục luận văn}
 Bố cục luận văn với nội dung tác giả trình bày được chia thành các phần sau đây:
 \begin{itemize}
-    \item \textbf{Chương \ref{chap-Intro}:} Giới thiệu đề tài.\\
+    \item \textbf{Chương \ref{chap-Intro}} Giới thiệu đề tài:
     Khái quát về vấn đề liên quan đến các chiến lược giao dịch và sự cần thiết của một hệ thống học máy trong mô hình dự đoán.
-    \item \textbf{Chương \ref{chap-Overview}:} Tổng quan về lĩnh vực nghiên cứu.\\
-    Tổng quan về  thị trường tiền mã hóa, nghiệp vụ giao dịch tiền mã hóa.
-    \item \textbf{Chương \ref{chap-Related_work}:} Các công trình liên quan.\\
-    Đưa ra một số các công trình xu hướng tăng giảm về giá của các đồng tiền mã hóa.
-    \item \textbf{Chương \ref{chap-Data}:} Chuẩn bị dữ liệu.\\
-    Trình bày quá trình thu thập dữ liệu, quá trình tiền xử lý dữ liệu cho bài toán học có giám sát.
-    \item \textbf{Chương \ref{chap-Research_method}, \ref{chap-Concept}:} Các phương pháp nghiên cứu, quá trình hiện thực.\\
-    Trình bày cách ứng dụng các chiến lược và các mô hình học máy được sử dụng trong việc dự đoán giá.
-    \item \textbf{Chương \ref{chap-Summary}:} Tổng kết.\\
-    Kết quả đạt được, những hạn chế của các chiến lược mô hình đã được sử dụng và hướng phát triển hệ thống trong tương lai.
+    % \item \textbf{Chương \ref{chap-Overview}} Tổng quan về lĩnh vực nghiên cứu:Tổng quan về  thị trường tiền mã hóa, nghiệp vụ giao dịch tiền mã hóa. Mô tả hai chiến lược qua đó đánh giá thị trường, nhận xét về tiềm năng và rủi ro đi kèm.
+    \item \textbf{Chương \ref{chap-Related_work}} Các công trình liên quan:
+    Đưa ra một số các công trình dự đoán xu hướng tăng giảm về giá của các đồng tiền mã hóa đã tham khảo.
+
+    \item \textbf{Chương \ref{chap-Research_method}, \ref{chap-Concept}} Các phương pháp nghiên cứu, quá trình hiện thực:
+    Trình bày sơ lược về lý do sử dụng; ưu, nhược điểm của các mô hình học máy có sử dụng trong đề tài. Các khái niệm cần thiết sẽ được trình bày để làm rõ thêm các mô hình sử dụng.
+    % \item \textbf{Chương \ref{chap-Data}} Chuẩn bị dữ liệu: Trình bày quá trình thu thập dữ liệu, quá trình tiền xử lý dữ liệu cho bài toán học có giám sát.
+
+    \item \textbf{Chương \ref{chap-Implement}} Tổng kết:
+    Kết quả đạt được, những hạn chế của các chiến lược mô hình đã được sử dụng và hướng phát triển hệ thống trong sau này.
     
+    % \item \textbf{Chương \ref{chap-Summary}:} Tổng kết.\\
+    % Kết quả đạt được, những hạn chế của các chiến lược mô hình đã được sử dụng và hướng phát triển hệ thống trong tương lai.
 \end{itemize}
+
+

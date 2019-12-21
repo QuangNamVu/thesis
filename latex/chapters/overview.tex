@@ -1,36 +1,124 @@
 \chapter{Tổng quan về lĩnh vực nghiên cứu} \label{chap-Overview}
-\section{Những yếu tố tác động đến giá trị đồng tiền mã hóa} \label{overview:factor}
-\subsection{Cung và cầu của thị trường}
-Trong nguyên tắc chính của kinh tế nếu nhu cầu mua đối với một đồng tiền tăng, giá trị của đồng tiền sẽ tăng và ngược lại khi nhu cầu bán tăng, giá sẽ giảm.
-\subsection{Tin tức trên các phương tiện thông tin đại chúng}
-Các sự kiện chính trị và kinh tế trên toàn thế giới ảnh hưởng đến cách mà con người phản ứng với các dự đoán giá, tin tức cảnh báo về rủi ro tác động chính lên cung-cầu.
-\subsection{Quy định của chính phủ}
-Có 4 cấp độ quản lý tiền ảo hiện nay đang được các nước thực thi, cụ thể:
-\begin{itemize}
-\item Cấm trên diện rộng.
-\item Cấm trong lĩnh vực tài chính ngân hàng (trong đó có Trung Quốc, Nga).
-\item Cảnh báo rủi ro đối với người sử dụng, đầu tư.
-\item  Chấp nhận như một phương tiện thanh toán (các nước chấp nhận đồng bitcoin gồm có Mỹ, Canada, Úc, Liên minh châu Âu, Phần Lan \cite{CountriesAllowBTC} ).
-\end{itemize}
-\subsection{Chính sách của các tổ chức}
-Facebook, Google và Twitter đã ngăn chặn khách hàng và người dùng sử dụng dịch vụ cryptocurrency.
-\subsection{Các vấn đề kỹ thuật}
-Vì đồng tiền mã hóa có thể bị hack thành công vào tài khoản hoặc bị tấn công máy chủ, có thể làm giảm tỷ giá hối đoái, dẫn đến giá giảm.
-\section{Nhu cầu sử dụng tiền mã hoá của mỗi hệ sinh thái}
-\begin{itemize}
-    \item Số thành viên tham gia vào hệ sinh thái (Số người đến khu vui chơi mua vé tham gia các trò chơi trong đó bằng tiền A).
-    \item Số lượng dịch vụ trong hệ sinh thái (Khu vui chơi có càng nhiều trò chơi thì nhu cầu sử dụng tiền A càng tăng); Và các nền tảng như Ethereum luôn mở cho các đối tác tạo các dịch vụ gia tăng trên đó giống như khu vui chơi cho phép đối tác bên ngoài vào tổ chức trò chơi ở trong.
-    \item  Số người đầu cơ: Những người nhận thấy nhu cầu tiền mã hoá của một hệ sinh thái tăng dần sẽ mua để nắm giữ chờ tăng giá thì bán ra. (Giống như phe vé bóng đá ngày trước mua vé chờ sát trận nhu cầu tăng vọt thì bán ra. Khu vui chơi thì ít có nhóm này vì lượng vé không bị giới hạn).
-    \item  Số người bán bên ngoài chấp nhận tiền mã hoá: Một số người bán nhận thấy tính thanh khoản của tiền mã hoá và giá trị tăng dần của nó nên đã chấp nhận khách hàng thanh toán các hàng hoá dịch vụ của mình bằng loại tiền này (Nhà hàng bên cạnh khu vui chơi có thể chấp nhận khách hàng thanh toán bằng tiền A).
-\end{itemize}
+Thị trường luôn bị biến động do ảnh hưởng của các yếu tố. Trong chương này, chúng tôi sẽ đề cập tới những yếu tố cơ bản tác động lên đồng tiền mã hóa. Tiếp theo sau đó chúng tôi sẽ trình bày các chiến lược kèm theo ưu, nhược điểm khi trao đổi ngắn hạn trên đồng mã hóa.
+
 
 \section{Giao dịch tiền mã hóa}
-Các sàn tiền mã hóa cung cấp các lệnh giao dịch cơ bản: mua, bán với những cặp (pair) đồng với nhau, ngoài ra còn có thêm phương thức mua, bán tiền ảo bằng tiền mặt thông qua sàn đóng vai trò như bên thứ ba.
+Các sàn tiền mã hóa cung cấp các lệnh giao dịch cơ bản: mua, bán với những cặp đồng (pair) với nhau, ngoài ra còn có thêm phương thức mua, bán tiền ảo bằng tiền mặt thông qua sàn đóng vai trò như bên thứ ba.\par
+Để đảm bảo các đồng mã hóa có giá trị, cần một đồng có giá trị ổn định (stable coin) có giá trị cố định, với 1 USDT có giá trị ngang với 1 USD. Một đồng ổn định kể trên cần có những hai tính chất: Đáng tin cậy (có một tập đoàn có tài sản tương ứng đứng ra đảm bảo số đồng không bị lạm phát) và không bị thao túng (có giải thuật để kiểm soát số lượng đồng dựa trên tài sản thế chấp hoặc các đồng tiền mã hóa có liên quan). Các đồng ổn định hiện nay gồm:
+ TrueUSD (TUSD), USD Tether (USDT), USD Coin (USDC), Digix Gold Tokens (DGX), trong đó đồng USDT có tổng giá trị lưu thông đạt tới 4.4 tỉ USD\footnote{\url{https://stablecoinindex.com} truy cập vào ngày 2019/10/17}, cao nhất trong các đồng ổn định.
+ 
+ Các mô hình và chiến lược trong luận văn được đánh giá dựa trên tổng giá trị của các đồng mã hóa tại một thời điểm được quy về USDT.
 
-\section{Các chiến lược giao dịch}\label{trading_strategy}
+\section{Các chiến lược giao dịch ngắn hạn}\label{strategy_describing}
 Hai chiến lược cơ bản được nghiên cứu và thực hiện trong đề tài như sau:
 \begin{itemize}
     \item Giao dịch cùng một loại cặp với nhau tại hai thời điểm khác nhau nhằm tăng số lượng đồng ban đầu.
     \item Giao dịch nhiều cặp với nhau theo một vòng dựa theo giá tại cùng một thời điểm.
-Hai chiến lược sẽ được mô tả chi tiết tại chương \ref{chap-trading_strategies}
+Hai chiến lược trên sẽ được trình bày chi tiết hơn trong phần tiếp theo. Tiếp sau đó, phần \ref{risk-strategy} sẽ trình bày rủi ro và tiềm năng của thị trường, từ đó làm nỗi bật các hạn chế, ưu điểm của từng chiến lược tương ứng.
 \end{itemize}
+Với dữ liệu được lấy từ sàn, có thể tạo một đánh giá thị trường với giao dịch ngắn hạn có tiềm năng hay không? Từ đó có thể tạo ra công cụ với khả năng dự đoán để tự động giao dịch không?  Nhằm trả lời cho hai câu hỏi trên, trong chương này sẽ đề cập tới hai phần chính:
+\begin{itemize}
+    \item Các chiến lược cơ bản được đề ra và mô phỏng hai chiến lược trên dữ liệu đã có. Ứng dụng các mô hình học máy để dự đoán xu hướng giá.
+    \item  Đánh giá rủi ro của hai chiến lược thông qua giá có trước, từ đó nhận định tiềm năng của thị trường.
+\end{itemize}
+\subsection{Chiến lược giao dịch cùng một loại cặp đồng}\label{describe_strategy_1}
+Khi giao dịch cùng một loại cặp đồng A/B theo thời gian khác nhau, đặt lệnh mua hay đổi đồng B để mua A khi tỷ giá A/B có xu hướng giảm ngược lại đặt lệnh bán khi tỷ giá có xu hướng tăng. Chiến lược này sẽ không hiệu quả khi giá ở mỗi phiên không chênh lệch nhau nhiều đặc biệt có trường hợp lỗ khi mỗi lần giao dịch sễ mất tiền phí do bên sàn thu. Vì vậy chiến lược nói trên sẽ được thêm một ràng buộc là  ngưỡng phí giao dịch $\epsilon$ và các biến:
+\begin{itemize}
+    \item $W^a_t$: số đồng A quy ra B theo giá tại thời điểm $t$.
+    \item $W^b_t$: số đồng B quy ra A theo giá tại thời điểm $t$.
+    \item $y_t$: tỷ giá đồng A/B tại thời điểm $t$.
+    \item $a$, $b$: số đồng A, số đồng B trong ví tại thời điểm đang xét.
+\end{itemize}
+Với $t$ là thời điểm gần nhất giao dịch, xét tại thời điểm $\tau$ xảy ra sau đó, Việc đặt lệnh mua phải thỏa yêu cầu sau:
+$W^a_\tau > W^a_t$ hay:
+\begin{align}
+ \frac{b}{y_\tau}(1-\epsilon) > \frac{b}{y_t}   
+\end{align}
+do đó: $y_\tau < y_t(1 -\epsilon)$  \\
+Tương tự, việc đặt lệnh bán phải thỏa yêu cầu sau:
+$W^b_\tau > W^b_t$ hay:
+\begin{align}
+ a (1 - \epsilon) y_\tau > ay   
+\end{align}
+hay $y_\tau(1 -\epsilon) > y_t $
+
+Việc mô phỏng chiến lược này cần tuân theo ràng buộc của sàn như sau: đơn vị tối thiểu là 0.000001 BTC và 0.01 USDT ví dụ muốn mua cặp đồng trên khi có 1.234 USDT với số lượng tối đa phí giao dịch sẽ là 0.1\% với giá khớp lệnh là 8000 số lượng USDT còn lại trong ví là 0.004 số lượng giao dịch sẽ là 1.23 USDT, số lượng BTC nhận vào ví là $1.23/8000*(1-0.1/100) = 0.00015359625$.
+
+
+ 
+ \subsection{Chiến lược giao dịch nhiều loại cặp đồng}
+  Với 3 đồng là A, B, C, việc chuyển đồng A chuyển sang đồng B, chuyển đồng B sang đồng C và cuối cùng chuyển lại đồng C sang đồng A tạo thành một vòng lặp, việc đồng A tăng lên hoặc giảm đi có thể xảy ra. Trong cùng một phiên giao dịch, việc tìm vòng lặp như trên sao cho số lượng đồng A được tăng lên so với trước đòi hỏi các lần chuyển đổi giữa các cặp diễn ra liên tục và có thứ tự nói cách khác tất cả các lần giao dịch đều phải được hoàn thành, đây cũng là nhược điểm của chiến lược này vì trong khi biết giá của các giao dịch trước, giá của các cặp sẽ đổi khi thực hiện giao dịch đòi hỏi giao dịch phải diễn ra nhanh.
+  Lấy ví dụ ở thời điểm lúc 8 giờ ngày 04/01/2018 xét 3 cặp đồng là BTC/USDT, ETH/BTC, ETH/USDT có tỉ giá tương ứng là 15172.12, 0.060893, 920.08 với phí giao dịch cho mỗi lần trao đổi mặc định là 0.1\% đối với sàn Binance, với 1.0 USDT lần lượt đổi các cặp là USDT sang ETH, ETH sang BTC và BTC sang USDT số đồng USDT thu về trong ví là 1.0011 với giả thiết ở mỗi giao dịch đều đổi hết (bỏ qua ràng buộc về số đồng tối thiểu). Trong ví dụ này với 3 đồng trên ta có thể thấy một cách trực quan rằng số đồng USDT tăng sau một vòng chuyển đổi. Việc tìm các vòng chuyển đổi tại mỗi thời điểm như trên có thể  được mô hình hóa bằng bài toán như sau:
+  \input{figures/pseudocode_strategy_02}
+  Thống kê với phí giao dịch mặc định là 0.1\% đối với sàn Binance từ 2018-01-01 đến 2019-09-21 gồm 15000 phiên giao dịch với khoảng thời gian mỗi phiên là 1 giờ xét trên 3 đồng BTC, ETH, USDT được thu thập từ 3 cặp: USDT/ETH, ETH/BTC, BTC/USDT đưa ra 75 lần đồ thị tồn tại chu trình âm. Khi thêm đồng BNB đồ thị với 4 loại đồng gồm 6 cặp, con số này đạt 1027 lần.
+  % TODO: notebook tăng eps, tăng số đồng -> tạo bảng
+  
+  \section{Rủi ro và tiềm năng của thị trường}\label{risk-strategy}
+\subsection{Chiến lược giao dịch trên một cặp đồng}
+  Khi thực hiện khảo sát chiến lược trao đổi trên một cặp, với dữ liệu thu được trên sàn Binance với cặp đồng BTC/USDT trong khoảng thời gian từ 2017-08-17
+đến 2019-09-01, giả sử số tiền trong ví ban đầu là 1.0 BTC các ngưỡng phí  $\epsilon$ được thay đổi cho ra kết quả được thống kê trong bảng sau:
+
+\definecolor{Gray}{gray}{0.9}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{maroon}{cmyk}{0,0.87,0.68,0.32}
+
+\begin{table}[ht]
+
+\centering % used for centering table
+\begin{tabular}{c c c c c} % centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+% Thời gian bắt đầu & Ngưỡng phí (\%) & Số lần giao dịch & Tổng USDT đầu & Tổng USDT sau \\ [0.5ex] % /home/nam/Dropbox/thesis/src/strategy_POC/notebook/.ipynb_checkpoints/Strategy_01-POC-report-checkpoint.ipynb
+\multirow{2}{*}{Thời gian bắt đầu}  & \multirow{2}{*}{Ngưỡng phí (\%)} &
+\multirow{2}{*}{Số lần giao dịch} & 
+\multirow{2}{*}{Tổng USDT đầu} & 
+\multirow{2}{*}{Tổng USDT sau} \\[2.5ex] %
+\hline % inserts single horizontal line
+\rowcolor{maroon!10}
+2017/08/28 13:00:00 & 0.1 & 129 & 4221.04 & 2193.22 \\
+% 2017-08-28 13:00:00 & 0.1 & 129 & 4221.04 & 2193.22 \\
+% inserting body of the table
+\rowcolor{maroon!10}
+2017/08/28 13:00:00 & 0.2 & 129 & 4221.04 & 2290.84 \\
+\rowcolor{LightCyan}
+2017/08/28 13:00:00 & 5 & 17 & 4221.04 & 6632.89 \\
+\rowcolor{LightCyan}
+2017/08/28 13:00:00 & 10 & 7 & 4221.04 & 6133.60 \\
+\rowcolor{maroon!10}
+2017/12/11 01:00:00 & 0.1 & 80 & 14975.03 & 9721.09 \\
+\rowcolor{maroon!10}
+2017/12/11 01:00:00 & 0.2 & 82 & 14975.03 & 9884.65 \\
+\rowcolor{LightCyan}
+2017/12/11 01:00:00 & 5 & 22 & 14975.03 & 17373.62 \\
+\rowcolor{maroon!10}
+2017/12/11 01:00:00 & 10 & 6 & 14975.03 & 13452.00 \\[1ex] % [1ex] adds vertical space
+
+% 2017-08-28 13:00:00 & 0.12 & 139 & 4221.04 & 2007.70 \\ [1ex] % [1ex] adds vertical space
+
+
+\hline %inserts single line
+\end{tabular}
+\label{table:nonlin} % is used to refer this table in the text
+
+\caption{Mô phỏng chiến lược giao dịch một cặp đồng theo thời gian}
+\end{table}
+
+% http://localhost:8888/notebooks/notebook/Strategy_01-POC-report.ipynb 
+% Trade log -> Timestamp ->
+Hạn chế dễ thấy của chiến lược này là không biết trước giá của phiên giao dịch tiếp theo. Cụ thể với ngày 2017/12/15 giá đạt ngưỡng cao nhất khi đó theo chiến lược, đổi hết đồng BTC sang thành USDT, tiếp theo giá giảm đều và qua ngưỡng phí và tiếp tục giảm, khi này số đồng USDT đã được chuyển sang BTC số lượng đồng BTC so với thời điểm trước khi bán ban đầu là nhiều hơn, khi giá tiếp tục giảm lệnh mua sẽ không được thực hiện do đã hết đồng USDT phải chờ đến khi giá tăng so với lần mua tại ngày 2018/16/03. Điều này dẫn tới việc tính theo giá USDT tổng giá trị BTC là giảm từ 14975.03 USDT xuống 13452 USDT. Để giảm rủi ro này, ta có thể dự đoán xu hướng giá đóng của phiên giao dịch kế tiếp
+% tức vào ngày giá cao nhất TODO
+, nếu giá có xu hướng giảm, lệnh mua sẽ được giữ lại tới khi giá có xu hướng tăng. Đây chính là ý tưởng chính cho việc hình thành bài toán dự đoán xu hướng giá ngắn hạn, các mô hình sẽ được học từ các phiên giao dịch trước và dự đoán xu hướng giá của phiên giao dịch sau. Việc đánh nhãn cho dữ liệu sẽ được trình bày trong phần \ref{data-labeling}.
+ % TODO tạo bảng 
+\subsection{Chiến lược giao dịch trên nhiều cặp đồng}
+  Với chiến lược đổi trên nhiều đồng, khi tăng số lượng đồng, việc giao dịch theo chiến lược này trở lên khó khăn hơn vì khi duyệt chu trình, tất cả các cạnh đều phải đi qua, nói cách khác các lần đổi đều phải hoàn thành. Tuy nhiên trong quá trình đổi, giá của hai đồng sẽ không giữ nguyên như giá hiện tại, việc khớp giá sẽ khó xảy ra. Do đó, việc đặt lệnh các đồng nên được hiện thực cùng lúc. Ngoài ra, bổ sung mô hình dự đoán xu hướng giá của phiên giao dịch tiếp theo có thể hỗ trợ thêm cho chiến lược này để tính khả năng đồ có chu trình âm có thể được duyệt tại phiên sau.
+ % TODO histogram trên notebook
+  
+  % TODO
+%   số lần chạy| Thời gian bắt đầu| Tỷ lệ dự đoán |profit  min | profit max | avg profit
+  
+%   Trong Tiểu mục \ref{describe_strategy_1} khi giao dịch trên một cặp đồng, mức độ rủi ro và tiềm năng của chiến lược này phụ thuộc vào các yếu tố như thị trường và ngưỡng phí cho trước, lệnh giao dịch được đưa ra dựa trên giá hiện tại, bổ sung cho chiến lược này khi biết chính xác xu hướng giá cần và
+
+% Với giao dịch trên nhiều đồng các thông số
+% TODO
+%   số lần chạy| Thời gian bắt đầu| Số sau 3 giao dịch |Số sau 5 giao dịch| Số giao dịch tiếp theo trung bình
+
+% \end{itemize}

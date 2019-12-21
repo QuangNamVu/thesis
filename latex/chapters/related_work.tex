@@ -1,3 +1,40 @@
 \chapter{Các công trình liên quan} \label{chap-Related_work}
-Trong chương này, chúng tôi sẽ trình bày các công trình liên quan tới việc sử dụng các mô hình học máy trong việc đoán xu hướng giá.\\
-Isaac Madan, Shaurya Saluja và Aojia Zhao đã ứng dụng các mô hình học máy để dự đoán giá của đồng Bitcoin với kết quả có độ chính xác vào khoảng 50-55\% tín hiệu giá tăng hay giảm với khoảng thời gian tiếp theo là 10 phút. Nhóm đã hiện thực việc thu thập thông qua api của sàn Coinbase và sàn OKCoin và cho ra dữ liệu gồm 25 đặc trưng liên quan tới đồng Bitcoin. Nhón tác giả đã hiện thực các mô hình như SVM, rừng quyết định, và Binomial GLM
+Trong chương này, chúng tôi sẽ trình bày các công trình liên quan tới việc thu thập dữ liệu về đồng tiền mã hóa cũng như các kết luận rút ra sau khi thí nghiệm các mô hình học máy trên dữ liệu.
+\section{Công trình dự đoán giá Bitcoin dựa trên giải thuật học máy}
+Isaac Madan, Shaurya Saluja và Aojia Zhao % TODO ref 003
+\cite{paper-automated-bitcoin-trading}
+đã ứng dụng các mô hình học máy để dự đoán giá của đồng Bitcoin với kết quả có độ chính xác vào khoảng 50-55\% trong việc dự đoán giá sau 10 phút tăng hoặc giảm. Nhóm tác giả đã hiện thực việc thu thập thông qua api của sàn Coinbase và sàn OKCoin và cho ra dữ liệu gồm 25 đặc trưng liên quan tới đồng Bitcoin trong vòng liên tục 5 năm. Nhón tác giả đã hiện thực các mô hình như SVM, rừng quyết định, và Binomial GLM. Thông qua lần lượt ba mô hình, nhóm tác giả đã thí nghiệm khi tăng khoảng thời gian dự đoán từ 10 giây lên 10 phút, độ chính xác của mô hình GLM và rừng quyết định tăng lên, với mô hình SVM cho kết quả giảm xuống. Rừng ngẫu nhiên có tính chính xác (precision) thấp hơn so với mô hình GLM.  Dựa trên kết quả trên, nhóm tác giả đã đưa ra hai kết luận sau:
+\begin{itemize}
+    \item Mô hình rừng ngẫu nhiên có hiện tượng thừa cây quyết định (decision tree), tuy nhiên trên dữ liệu kiểm thử kết quả đạt 57.4\%  chứng tỏ dữ liệu kiểm thử không quá khác biệt so với tập huấn luyện. Thêm vào đó rừng ngẫu nhiên cũng đưa ra chỉ số chính xác (precision) thấp, mô hình dự đoán rơi nhiều vào giá tăng gây hiện tượng khi dự đoán, xu hướng tăng thường lấn át xu hướng giảm.
+    \item Khi kết hợp mô hình rừng ngẫu nhiên và GLM theo hàm tuyến tính với các trọng số tỉ lệ thuận với độ chính xác của hai mô hình, chỉ số nhạy (sensitivity) đối với dữ liệu phiên 10 phút cao hơn so với dữ liệu phiên 10 giây.
+\end{itemize}
+\section{Công trình dự đoán giá Bitcoin dựa trên mạng lưới giao dịch}
+% Ref 005
+Alex Greaves và Benjamin Au \cite{paper-Bitcoin-Transaction-Graph} phân tích các mạng giao dịch (transaction graph) để dự đoán xu hướng đồng Bitcoin cho ra kết quả vào khoảng 55\%. Dữ liệu được thu thập trên mạng lưới giao dịch (transaction graph) trong vòng 1 năm tính từ 2012/01/01 đến 2013/01/01 gốm một vài đặc trưng như: giá đồng Bitcoin hiện tại, trung bình số nút vào (in-node) và nút ra (out-node), số lượng Bitcoin đã được ``đào''. Các mô hình phân loại được sử dụng trong bài báo trên gồm hồi quy Logistic, SVM, mạng nơ-ron với 2 lớp. Một kết luận quan trọng đưa ra trong bài báo trên về hành vi mua bán: khi số lệnh giao dịch biến động (tăng lên hoặc giảm xuống nhanh), người tham gia có xu hướng tích lũy và ít giao dịch lại.
+
+\section{Các mô hình học máy nổi bật}
+
+% Trong hai chương trước, chúng tôi đã tóm lược về các chiến lược giao dịch ngắn hạn và các mô hình học máy được áp dụng cho bài toán dự đoán xu hướng giá, chương tiếp theo sau đây sẽ đề cập tới các mô hình được sử dụng trong luận văn gồm 3 mô hình học máy được sử dụng trên các công trình đã tham khảo và mô hình còn lại sử dụng kĩ thuật học sâu.
+Trong các công trình nghiên cứu trên, xét về mô hình học máy có các mô hình chung như:
+\begin{itemize}
+    \item Rừng ngẫu nhiên
+    \item Support vector machine
+    \item Hồi quy logistic.
+    % \item Mô hình Variationnal autoencoder (một biến thể của mô hình Autoencoder) với mỗi điểm dữ liệu được lấy từ $T$ phiên giao dịch liên tiếp.
+\end{itemize}
+%  với mỗi điểm dữ liệu là một phiên giao dịch.
+Với mỗi mô hình học máy kể trên, chúng tôi sẽ đưa ra các lý do sử dụng, cơ chế chính và hạn chế riêng trên tập dữ liệu nghiên cứu
+\subsection{Rừng ngẫu nhiên}
+Trong trường hợp giá có xu hướng tăng liên tục trong vòng 5 giờ, giá phiên cuối sẽ tăng so với đường trung bình động hay Moving Average (MA) giá 4 giờ trước. Với cây quyết định, quy luật trên là có thể biểu diễn được khi dữ liệu được thêm thuộc tính mới như biên độ của giá hiện tại và MA 4 giờ trước. Để  có thể biểu diễn được các quy luật trên, mô hình được cải tiến thành Rừng ngẫu nhiên khi lựa chọn ngẫu nhiên các thuộc tính của dữ liệu gốc để hình thành các cây quyết định riêng và tổng hợp lại.
+
+Ưu điểm của rừng ngẫu nhiên (Random Forest) là từ từng cây, ta có thể mô tả được tập quy luật tương ứng.
+
+Nhược điểm của cây quyết định dễ nhìn thấy khi phân nhánh cây được chia dựa trên một thuộc tính, do đó việc chọn thuộc tính trong phần xử lý dữ liệu trước khi đưa vào mô hình yêu cầu kiến thức về dữ liệu chuỗi thời gian cũng như kinh nghiệm giao dịch; thêm nữa các thuộc tính thường không đơn giản khi kết hợp số lượng lớn thuộc tính cụ thể như việc biểu diễn mối quan hệ của 3 thuộc tính từ dữ liệu gốc: giá đóng phiên; số lượng người tham gia; số lượng đồng giao dịch thành thuộc tính mới.
+
+\subsection{Máy vectơ hỗ trợ}
+Khi biểu diễn dữ liệu dạng 2 chiều như hình % TODO: scatter plot
+nhãn tăng, giảm phiên giao dịch rất khó phân biệt, tuy nhiên khi trên không gian lớn hơn như 36 chiều, việc có thể tìm được đường biên để chia là khả thi khi sử dụng mô hình Máy vectơ hỗ trợ (Support Vector Machine-SVM).
+Tuy nhiên, vì dữ liệu nhiều chiều như vậy, việc hình dung không gian có số chiều lớn dựa trên hình chiếu 2 chiều là không thể, mô hình lúc này trở thành hộp kín (black box learning algorithm). Do đó việc xử lý dữ liệu, lựa chọn thuộc tính trước khi đưa vào SVM đóng vai trò quan trọng.
+
+\subsection{Hồi quy logistic}
+Mô hình hồi quy logistic (logistic regression) được coi như một mô hình phân loại. Mô hình đạt kết quả tốt trong bài toán với dữ liệu có thể dễ dàng phân tách trên đường phân cách tuyến tính. Một điểm hạn chế của mô hình khi trên các dữ liệu bị trùng và ảnh hưởng lẫn nhau như: phiên giao dịch của tháng trước và phiên hiện tại có các thông số như nhau, tuy nhiên sau khi kết thúc phiên, giá của phiên sau sẽ tăng trong khi phiên tháng trước giá giảm.

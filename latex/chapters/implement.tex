@@ -1,0 +1,85 @@
+\chapter{Hiện thực hệ thống}\label{chap:Implement}
+Với lộ trình nghiên cứu đã đề ra trong chương \ref{chap-Research_method}, tiếp theo đây, chúng tôi hiện thực việc thu thập dữ liệu. Sau đó, chúng tôi xử lý dữ liệu trước khi đưa vào mô hình học máy.
+\section{Thu thập dữ liệu}
+% CCXT – CryptoCurrency eXchange Trading Library
+
+Để chi tiết hơn cho phần \ref{Research_data_crawl}, chúng tôi sẽ mô tả việc thu thập bằng công cụ CCXT (CryptoCurrency eXchange Trading Library) trên nền python. Một giao dịch có giá trị cụ thể như sau:
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+ "timestamp": 1569758400471,
+ "datetime": "2019-09-29T12:00:00.471Z",
+ "symbol": "BTC/USDT",
+ "id": 166647503,
+ "order": None,
+ "type": None,
+ "takerOrMaker": None,
+ "side": "sell",
+ "price": 8073.86,
+ "amount": 0.028108,
+ "cost": 226.94005688,
+ "fee": None
+}
+\end{lstlisting}
+Với các giáel trị:
+\begin{itemize}
+    \item timestamp, datetime: thời gian dạng Unix và thời gian thực với GMT +0
+    \item symbol: tên của loại cặp đồng.
+    \item id: mã số định danh cho phiên giao dịch.
+    \item side: "sell" (bên bán), trường hợp còn lại là "buy" (bên mua).
+    \item price: giá đặt bán với tỷ giá \textit{BTC/USDT} là 8073.86.
+    \item amount: lượng đồng BTC bán ra.
+    \item cost: số đồng USDT nhận được.
+    \item fee: không có khoản phí phải trả cho giao dịch.
+\end{itemize}
+Trong khoảng thời gian được định sẵn là một giờ, ta có thể thống kê lại được số lượng đồng mua, bán theo đoạn mã sau:
+
+% \begin{minted}{python}
+% \begin{lstlisting}[language=python,firstnumber=1]
+\begin{python}
+t = exchange.fetch_trades(symbol=symbol, since=from_timestamp)
+buy_amount_list = []
+sell_amount_list = []
+price_list = []
+cost_list = []
+for trade in t:
+    if trade.get('side') == 'buy':
+        buy_amount_list.append(trade.get('amount'))
+
+    elif trade.get('side') == 'sell':
+        sell_amount_list.append(trade.get('amount'))
+    
+    price_list.append(trade.get('price'))
+    cost_list.append(trade.get('cost'))
+\end{python}
+
+
+
+\section{Tiền xử lý dữ liệu}
+% statistic Spread Buy-Sell
+Sau quá trình thu thập dữ liệu, dữ liệu thô được lưu dạng csv tiếp đến được xử lý bằng cách thêm cột và chuẩn hóa.
+
+\section{Đánh nhãn dữ liệu}
+% statistic bao nhiêu label
+
+\section{Hiện thực các mô hình đã tham khảo}
+% Focus in VAE trick
+
+\section{Các thư viện sử dụng trong mô hình}
+Chúng tôi sử dụng ngôn ngữ lập trình Python phiên bản 3.6 để tiến hành thí nghiệm, các thư viện sử dụng được viết trên ngôn ngữ này, đồng thời là mã nguồn mở được sử dụng rộng rãi như: Scikit-learn, NumPy, Pandas, TensorFlow và một số thư viện khác.
+
+\textbf{\textit{Scikit-learn} 0.19.1}: là một thư viện mã nguồn mở được viết bằng ngôn ngữ lập trình Python. Thư viện này hiện thực hầu hết các mô hình học máy hiện tại bao gồm cả học có giám sát và học
+không có giám sát. Thư viện cũng cung cấp các công cụ cho quá trình đọc dữ liệu, tiền xử lý,
+trích xuất đặc trưng và có sẵn nhiều bộ dữ liệu mẫu cho các ví dụ. Đây là một thư viện dễ sử
+dụng, hiệu năng tốt cho làm việc nghiên cứu.
+
+\textbf{\textit{Numpy} 1.15.3}: là một gói cơ bản cho các tính toán khoa học sử dụng Python. Thư viện này cung cấp các công cụ toán các hàm liên quan đến đại số tuyến tính,... Các tính
+toán trong Numpy đều đã được tối ưu để xử lý song song, tăng hiệu năng tính toán và tích hợp
+với cả các ngôn ngữ và hệ cơ sở dữ liệu khác.
+
+\textbf{\textit{Pandas} 0.21.0}: để xử lý các
+tập tin dữ liệu dưới dạng dataframe (gồm tập huấn luyện và tập kiểm tra)
+
+\textbf{\textit{TensorFlow} 1.12.1}: là một thư viện mã nguồn mở cung cấp khả năng xử lí tính toán số học dựa trên biểu đồ mô tả sự thay đổi của dữ liệu, trong đó các nút (node) là các phép tính toán học còn các cạnh biểu thị luồng dữ liệu. Ngoài ra, trong mô hình sử dụng thư viện Tensorpack 0.9.5 dựa trên nền thư viện TensorFlow nhằm tối ưu tốc độ xử lý.
+
+Trong ba mô hình đầu gồm Rừng ngẫu nhiên; SVM; Hồi quy Logistic được thí nghiệm bằng thư viện Scikit-learn. Mô hình cuối dựa trên VAE sẽ được hiện thực bằng thư viện Tensorpack nhằm tối ưu hai luồng chạy: xáo trộn dữ liệu (shuffle) và huấn luyện mạng nơ-ron.

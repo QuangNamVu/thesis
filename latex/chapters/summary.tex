@@ -1,81 +1,127 @@
-\chapter{Thí nghiệm với mô hình} \label{chap-Summary}
+\chapter{Thí nghiệm và đánh giá} \label{chap-Implement}
+Trong hai chương trước có đề cập tới các mô hình tham khảo và cách thu thập, xử lý dữ liệu để chuẩn bị cho quá trình thí nghiệm. Tiếp sau đây, trong chương này sẽ trình bày thư viện sử dụng, mô tả tham số trong mô hình. Dựa trên kết quả các mô hình từ đó rút ra các nhận xét về mô hình sử dụng và các điểm hạn chế khi hiện thực đồng thời đưa ra các hướng phát triển của luận văn.
 
-\section{Phân tích hiện thực mô hình tham khảo}
-% \subsection{Xử lý dữ liệu bài toán}
-% Yêu cầu của bài toán là dự đoán giá của các đồng với nhau. Bài toán có thể chia ra làm 2 loại như sau:
-% \begin{itemize}
-% 	\item Phân loại giá tăng hoặc giảm trong một khoảng thời gian kế tiếp.
-% 	\item Dự đoán giá của các đồng xác định trong phạm vi liên tục tại thời gian kế tiếp.
-% \end{itemize}
-% Các mô hình đã tham khảo thuộc bài toán học có giám sát, dữ liệu được chia thành 3 ph
+\section{Các độ đo được sử dụng}
+Trong phần này, chúng tôi trình bày các độ đo được sử dụng để đánh giá các mô hình. Trước
+hết, chúng tôi trình bày ma trận nhầm lẫn (confusion matrix) cho các nhãn dự đoán như trong Bảng 
+% \ref{tab:confusion_matrix} 
+\input{tables/confusion_matrix}
 
-\subsection{Áp dụng dữ liệu vào mô hình rừng ngẫu nhiên}
- Đề tài có sử dụng thư viện hỗ trợ scikit-learn để hiện thực rừng ngẫu nhiên.
- Mô hình rừng ngẫu nhiên có đầu vào là dữ liệu ở dạng bảng với mỗi thuộc tính (mỗi cột) có thể ở dạng loại rời rạc (category) hoặc liên tục (numerical). Khi áp dụng dữ liệu thô, với mỗi quan sát là một dòng thuộc bảng và nhãn là giá lên hoặc xuống, đối với giá trong 1 phút sau ta có thể phân ra 2 loại tăng hoặc giảm. Tuy nhiên với mỗi quan sát trước có thể phụ thuộc vào nhiều quan sát trước đó, việc sử dụng các cây CART chỉ với một giao dịch là không phù hợp,ta có thể thêm các thuộc tính như giá trung bình trong 1 giờ trước đó, trong một ngày trước đó, \dots
+% \section{Thí nghiệm Rừng ngẫu nhiên}
+% Trong quá trình huấn luyện, mô hình rừng ngẫu nhiên cho kết quả gần như tuyệt đối, tuy nhiên khi kiểm định trên các tháng cuối mô hình đạt khoảng 53-55\% với nhiều lần chạy. Với kết quả trên ngoài các độ đo như f1-score, độ chính xác, đề tài sử dụng cách kiểm định cross-validation nhằm xác định độ sai khác mẫu (pattern) giữa các phiên giao dịch. Kết quả 
+%  \input{tables/rf_confusion_matrix}
+%  Kết quả cho độ chính xác là 56.02\%. \\
  
- \subsection{Áp dụng dữ liệu vào mô hình mạng nơron tích chập}
- Đề tài có sử dụng thư viện hỗ trợ keras trên nền tensorflow một thư viện mã nguồn mở có hỗ trợ khả năng tính toán của các bộ xử lý đồ họa. Trong bước tiền xử lý dữ liệu để đưa vào trong mạng có sử dụng mỗi cửa sổ trượt làm một ảnh một chiều với số kênh là số thuộc tính của mỗi giao dịch, độ dài của mỗi ảnh được định nghĩa trước là số giao dịch liên tục. Nhãn của những ảnh này là xu hướng tăng hoặc giảm của giao dịch cuối cùng với mỗi ảnh.\\
- Khi dữ liệu được đưa vào mạng nơron cần được chuẩn hóa để tránh hiện tượng các nơron không cập nhật được khi hàm kích hoạt có họ ReLU hoặc khó kích hoạt khi các hàm kích hoạt phi tuyến khác như hàm sigmoid hoặc hàm tanh.\\ Các bước \textbf{chuẩn hóa dữ liệu} được mô tả như sau:
- \begin{itemize}
- 	\item Các thuộc tính về thời gian đổi về dạng số nguyên theo chuẩn UNIX.Các số này khá lớn nên được chuẩn hóa dạng logarit, sau đó chuẩn hóa theo standard score.
- 	%TODO Standard score viết công thức
- 	\item Các thuộc tính còn lại như lượng giao dịch, giá mở, giá đóng theo dạng standard score
- \end{itemize}
+% \section{Thí nghiệm mô hình Máy học véctơ hỗ trợ}
 
-Dữ liệu được đưa vào mạng nơron tích chập với ý tuởng chính như sau:
+% \textbf{Mô hình SVM} Kết quả được tính bằng trung bình của 3 tháng cuối tương ứng với 2160 phiên liên tục. Kết quả được mô tả theo bảng dưới đây:\\
+
+% % \input{figures/tables/svm_confusion_matrix}
+
+% \input{tables/svm_confusion_matrix}
+    
+% Kết quả trên đưa ra độ chính xác 55.23\%
+
+% \section{Thí nghiệm mô hình Hồi quy Logistic}
+
+%  \input{tables/lr_confusion_matrix}
+ 
+%  \textbf{Mô hình hồi quy logistic} Kết quả cho độ chính xác là 55.93\%.
+ 
+% \section{Thí nghiệm mô hình dựa trên VAE}
+
+% \input{tables/vae_confusion_matrix.tex}
+ 
+%  \textbf{Mô hình dựa trên VAE} Kết quả cho độ chính xác là 54.76\%.
+%  \subsection{Áp dụng dữ liệu vào mô hình mạng nơron tích chập}
+%  Đề tài có sử dụng thư viện hỗ trợ keras trên nền tensorflow một thư viện mã nguồn mở có hỗ trợ khả năng tính toán của các bộ xử lý đồ họa. Trong bước tiền xử lý dữ liệu để đưa vào trong mạng có sử dụng mỗi cửa sổ trượt làm một ảnh một chiều với số kênh là số thuộc tính của mỗi giao dịch, độ dài của mỗi ảnh được định nghĩa trước là số giao dịch liên tục. Nhãn của những ảnh này là xu hướng tăng hoặc giảm của giao dịch cuối cùng với mỗi ảnh.\\
+%  Khi dữ liệu được đưa vào mạng nơron cần được chuẩn hóa để tránh hiện tượng các nơron không cập nhật được khi hàm kích hoạt có họ ReLU hoặc khó kích hoạt khi các hàm kích hoạt phi tuyến khác như hàm sigmoid hoặc hàm tanh.\\ Các bước \textbf{chuẩn hóa dữ liệu} được mô tả như sau:
+%  \begin{itemize}
+%  	\item Các thuộc tính về thời gian đổi về dạng số nguyên theo chuẩn UNIX.Các số này khá lớn nên được chuẩn hóa dạng logarit, sau đó chuẩn hóa theo standard score.
+%  	%TODO Standard score viết công thức
+%  	\item Các thuộc tính còn lại như lượng giao dịch, giá mở, giá đóng theo dạng standard score
+%  \end{itemize}
+
+% Dữ liệu được đưa vào mạng nơron tích chập với ý tuởng chính như sau:
+
+\section{Kết quả}
+\subsection{So sánh kết quả các mô hình đề xuất}
+
+Chúng tôi so sánh kết quả dự đoán của bốn mô hình được sử dụng trong luận văn trên tập dữ liệu giao dịch từ ngày 2017/08/17 gồm hai khung thời gian phiên là 1 giờ và 5 phút cho ra các kết quả trong bảng:
+\begin{table}[H] 
+    \centering
+
+    \begin{tabularx}{0.8\textwidth}
+    {
+    p{\dimexpr.4\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 1
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 2
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}
+    }
+        
+        \toprule
+        \textbf{Mô hình} & \textbf{Độ chính xác} & \textbf{f1 score} \\
+        % \cmidrule
+        \midrule
+        \textbf{Rừng ngẫu nhiên} & \textbf{rf} & \textbf{rf} \\
+        \textbf{SVM} & \textbf{svm} & \textbf{svm} \\
+        \textbf{Hồi quy Logistic} & \textbf{lr} & \textbf{lr} \\
+        \textbf{VAE} & \textbf{vae} & \textbf{vae} \\
+        \bottomrule
+        
+    \end{tabularx}
+    \label{tab:1h_compare}
+    \caption{Kết quả dự đoán trên 1 giờ (đơn vị: \%)}
+\end{table}
 
 
-\input{figures/pseudocode_rolling_window}
-Khi áp dụng standard score, với mỗi thuộc tính có giá trị trung bình về 0 và phương sai về 1. Điều này ảnh hưởng tốt cho mạng nơron tích chập khi hội tụ nhanh và khó bị `kẹt lại' ở những điểm thung lũng hơn.
 
-% \dots
- % TODO dụng dữ liệu thô như hình 1.1
- 
- \section{Kết quả}
- Các số liệu kết quả trong phần này được lấy từ các lần thực nghiệm huấn luyện trên google colab, một nền tảng dịch vụ có hỗ trợ phần cứng và thư viện miễn phí, với dữ liệu đầu vào từ  xxxxxxxxx và độ chính xác theo bài toán phân loại lên hoặc xuống.
- 
- \textbf{Mô hình SVM} Kết quả được tính bằng trung bình của 3 tháng cuối tương ứng với 2160 phiên liên tục. Kết quả được mô tả như hình sau:\\
+\begin{table}[H] 
+    \centering
 
-\begin{tabular}{cc|cc}
-\multicolumn{2}{c}{}
-            &   \multicolumn{2}{c}{Dự đoán} \\
-    &       &   Giảm &   Tăng              \\ 
-    \cline{2-4}
-\multirow{2}{*}{\rotatebox[origin=c]{90}{Thực tế}}
-    & Giảm   & 445   & 663                 \\
-    & Tăng   & 396    & 716                \\ 
-    \cline{2-4}
-    \end{tabular}
+    \begin{tabularx}{0.8\textwidth}
+    {
+    p{\dimexpr.4\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 1
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}% column 2
+    p{\dimexpr.2\linewidth-2\tabcolsep-1.0\arrayrulewidth}
+    }
+        
+        \toprule
+        \textbf{Mô hình} & \textbf{Độ chính xác} & \textbf{f1 score} \\
+        % \cmidrule
+        \midrule
+        \textbf{Rừng ngẫu nhiên} & 61.88 & \textbf{rf} \\
+        \textbf{SVM} & 60.67 & svm \\
+        \textbf{Hồi quy Logistic} & 64.24 & \textbf{lr} \\
+        \textbf{VAE} & \textbf{vae} & \textbf{vae} \\
+        \bottomrule
+        
+    \end{tabularx}
+    \label{tab:1h_compare}
+    \caption{Kết quả dự đoán trên 5 phút (đơn vị: \%)}
+\end{table}
+% TODO: nhận xét
+
+
+
+
+% : Rừng ngẫu nhiên, Máy học véctơ hỗ trợ, hồi quy logistic và mô hình dựa trên VAE
+
+
+
+
+% \input{figures/pseudocode_rolling_window}
+% Khi áp dụng standard score, với mỗi thuộc tính có giá trị trung bình về 0 và phương sai về 1. Điều này ảnh hưởng tốt cho mạng nơron tích chập khi hội tụ nhanh và khó bị `kẹt lại' ở những điểm thung lũng hơn.
+
+% % \dots
+%  % TODO dụng dữ liệu thô như hình 1.1
+%   \subsection{Áp dụng dữ liệu vào mô hình mạng Long Short-term Memory}
+%  Mô hình mạng LSTM có ưu điểm 
+%  Các số liệu kết quả trong phần này được lấy từ các lần thực nghiệm huấn luyện trên google colab, một nền tảng dịch vụ có hỗ trợ phần cứng và thư viện miễn phí, với dữ liệu đầu vào từ  xxxxxxxxx và độ chính xác theo bài toán phân loại lên hoặc xuống.
  
  
+
  
- \textbf{Mô hình hồi quy logistic} Kết quả cho độ chính xác là 55.56\%.\\
- 
- \begin{tabular}{cc|cc}
-\multicolumn{2}{c}{}
-            &   \multicolumn{2}{c}{Dự đoán} \\
-    &       &   Giảm &   Tăng              \\ 
-    \cline{2-4}
-\multirow{2}{*}{\rotatebox[origin=c]{90}{Thực tế}}
-    & Giảm   & 606   & 443                 \\
-    & Tăng   & 517    & 594                \\ 
-    \cline{2-4}
-    \end{tabular}
-    \\
-  \textbf{Mô hình rừng ngẫu nhiên} Kết quả cho độ chính xác là 54.54\%. \\
-  
-  \begin{tabular}{cc|cc}
-\multicolumn{2}{c}{}
-            &   \multicolumn{2}{c}{Dự đoán} \\
-    &       &   Giảm &   Tăng              \\ 
-    \cline{2-4}
-\multirow{2}{*}{\rotatebox[origin=c]{90}{Thực tế}}
-    & Giảm   & 553   & 516                 \\
-    & Tăng   & 446    & 645                \\ 
-    \cline{2-4}
-    \end{tabular}
+
   
   %\includegraphics{figures/} 
  % TODO: get information about google clould resource
- 
- 

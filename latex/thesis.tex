@@ -1,44 +1,123 @@
-\documentclass[
-12pt, % 10pt, 11pt, 12pt
-english,
-singlespacing, 
-liststotoc, 
-toctotoc, 
-parskip, % Uncomment to add space between paragraphs
-headsepline, % Uncomment to get a line under the header
-]{MastersDoctoralThesis} % The class file specifying the document structure
-\input{preamble} % list package
-\input{thesis_info} % khoa supervisor
+\documentclass[12pt]{report}
+\input{preamble}
 
+\title{Xây dựng mô hình dự đoán xu hướng\\ giá ngắn hạn các đồng tiền mật mã\\ bằng kĩ thuật học máy}								% Title								% Author
+\date{\today}											% Date
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
+\makeatletter
+\let\thetitle\@title
+\let\thedate\@date
+\makeatother
+\usepackage{tabularx}
+\usepackage{tabularx,ragged2e}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\newcolumntype{L}{>{\arraybackslash}X}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{nameref}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyfoot[RO,LE]{\thepage}
+\fancypagestyle{plain}{%  the preset of fancyhdr 
+    \fancyhf{} % clear all header and footer fields
+    \fancyfoot[C]{\textbf{\thepage}} % except the center
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}}
+    
+
+\renewcommand\appendixpagename{Phụ lục}
+\renewcommand\appendixtocname{Phụ lục}
+%\renewcommand\algorithmautorefname{Thuật toán}
+\renewcommand\algorithmcfname{Thuật toán}
+%\newtheorem{algorithm}{}
+
+\setcounter{secnumdepth}{4}
+
+\usetikzlibrary{shapes,arrows}
+
 \begin{document}
-\input{frontbackmatter/titlepage}
-%\input{frontbackmatter/abstract}
-%\input{frontbackmatter/acknowledgements}
-\input{frontbackmatter/toc}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mainmatter
+%\leavevmode\thispagestyle{empty}\newpage
+%{leftmargin}{topmargin}{rightmargin}{bottommargin}{headheight}{headsep}{footheight}{footskip}
+\setmarginsrb{3.0 cm}{-1.0 cm}{2.0 cm}{2.0 cm}{1.2 cm}{1 cm}{1.2 cm}{1 cm}
+\input {titlepage}
+\setmarginsrb{3.0 cm}{2.0 cm}{2.0 cm}{2.0 cm}{1.2 cm}{1 cm}{1.2 cm}{1 cm}
+
+%\input{frontbackmatter/titlepage}
+%\input{frontbackmatter/toc}
+
+%\input {topword/declaration}
+%\input {topword/acknowledgement}
+%\input {topword/abstract}
+
+\input{chapters/camket.tex}
 \input{chapters/LoiCamOn}
-\input{chapters/camket}
+\input{frontbackmatter/abstract.tex}
+
+\input {menu_content}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+
+%\input {chapters/introduction/reason_n_target}
+%\input {chapters/introduction/scope_n_objectives}
+%\input {chapters/introduction/thesis_structure}
+
+
+
+
 \input{chapters/intro}
-\input{chapters/overview}
-\input{chapters/trading_strategies}
+
 \input{chapters/related_work}
-\input{chapters/data}
+
 \input{chapters/research_method}
+
 \input{chapters/concept}
 
+\input{chapters/implement}
+
 \input{chapters/summary}
-\input{chapters/ref_models}
-%\input{chapters/next_plan}
 
-%\input{reports/week24}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\printbibliography[title={Tài liệu tham khảo}]
-%\printbibliography[keyword={Vietnam},title={Tài liệu tham khảo}]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{appendices/appendixA.tex}
+%\chapter{Cơ sở lý thuyết}
+%\thispagestyle{empty}\newpage
+%\input {chapters/theory/overview}
+%\input {chapters/theory/deeplearning}
+%\input {chapters/theory/data_training}
+% \input {chapters/theory/type_labeling}
+
+%\chapter{Các công trình liên quan}
+%\thispagestyle{empty}\newpage
+%\input {chapters/related_works/related_works}
+%\input {chapters/related_works/vgg}
+%\input {chapters/related_works/ssd}
+
+%\chapter{Phương pháp sử dụng}
+%\thispagestyle{empty}\newpage
+%\input {chapters/proposal_solutions/prior_research_gvlab}
+%\input {chapters/proposal_solutions/proposal_method}
+
+%\chapter{Hệ thống hỗ trợ làm nhãn thông minh cho bài toán học sâu}
+%\thispagestyle{empty}\newpage
+%\input {chapters/system/require_analysis}
+%\input {chapters/system/technology_selected}
+%\input {chapters/system/system_architecture}
+%\input {chapters/system/system_using}
+%\input {chapters/system/deploy_system}
+
+%\chapter{Tổng kết}
+%\thispagestyle{empty}\newpage
+%\input {chapters/summary/review}
+%\input {chapters/summary/futurework}
+%\input {chapters/summary/progress}
+
+%\chapter{Tài liệu tham khảo}
+\thispagestyle{empty}\newpage
+\bibliographystyle{IEEEtran}
+%\bibliography{reference}
+\bibliography{myref}
+
 \end{document}
